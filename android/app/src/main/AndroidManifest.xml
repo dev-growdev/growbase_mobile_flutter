@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.agmais_mobile">
+    package="com.example.growbase_mobile_flutter">
    <application
-        android:label="agmais_mobile"
+        android:label="growbase_mobile_flutter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

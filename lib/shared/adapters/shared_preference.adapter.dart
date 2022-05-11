@@ -1,4 +1,4 @@
-import 'package:agmais_mobile/shared/data/errors/exceptions.dart';
+import 'package:growbase_mobile_flutter/shared/data/errors/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ILocalStorage {

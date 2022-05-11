@@ -1,6 +1,6 @@
 {
-    "name": "agmais_mobile",
-    "short_name": "agmais_mobile",
+    "name": "growbase_mobile_flutter",
+    "short_name": "growbase_mobile_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

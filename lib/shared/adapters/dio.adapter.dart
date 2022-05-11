@@ -1,5 +1,5 @@
-import 'package:agmais_mobile/shared/data/models/http_response.model.dart';
-import 'package:agmais_mobile/shared/data/errors/exceptions.dart';
+import 'package:growbase_mobile_flutter/shared/data/models/http_response.model.dart';
+import 'package:growbase_mobile_flutter/shared/data/errors/exceptions.dart';
 import 'package:dio/dio.dart';
 
 abstract class IHttpAdapter {

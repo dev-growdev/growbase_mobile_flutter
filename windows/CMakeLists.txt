@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(agmais_mobile LANGUAGES CXX)
+project(growbase_mobile_flutter LANGUAGES CXX)
 
-set(BINARY_NAME "agmais_mobile")
+set(BINARY_NAME "growbase_mobile_flutter")
 
 cmake_policy(SET CMP0063 NEW)
 

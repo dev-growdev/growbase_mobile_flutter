@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:agmais_mobile/themes/light.theme.dart';
-import 'package:agmais_mobile/injection_container.dart' as di;
+import 'package:growbase_mobile_flutter/themes/light.theme.dart';
+import 'package:growbase_mobile_flutter/injection_container.dart' as di;
 
 void main() {
   di.init();

@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "agmais_mobile" "\0"
+            VALUE "FileDescription", "growbase_mobile_flutter" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "agmais_mobile" "\0"
+            VALUE "InternalName", "growbase_mobile_flutter" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "agmais_mobile.exe" "\0"
-            VALUE "ProductName", "agmais_mobile" "\0"
+            VALUE "OriginalFilename", "growbase_mobile_flutter.exe" "\0"
+            VALUE "ProductName", "growbase_mobile_flutter" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
