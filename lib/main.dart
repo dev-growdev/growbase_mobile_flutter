@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:growbase_mobile_flutter/features/authentication/view/login/login.page.dart';
 import 'package:growbase_mobile_flutter/injection_container.dart' as di;
-import 'package:growbase_mobile_flutter/themes/light.theme.dart';
+import 'package:growbase_mobile_flutter/themes/theme.dart';
 import 'package:growbase_mobile_flutter/utils/routes.dart';
 
 import 'features/authentication/view/create-account/create-account.page.dart';
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Example',
-      theme: lightTheme(context),
+      theme: lightTheme(),
+      darkTheme: darkTheme(),
       routes: {
         Routes.splashScreen: (_) => const HomeWidget(),
         Routes.login: (_) => const LoginPage(),
