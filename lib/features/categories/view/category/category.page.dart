@@ -26,7 +26,7 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (!isNewCategory) {
         await getCategoryStore.getCategory(widget.uid!);
         updateCategoryStore.setState(
@@ -49,7 +49,6 @@ class _CategoryPageState extends State<CategoryPage> {
       );
       Navigator.of(context).pop();
     } else {
-      print(createCategoryStore.failure);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
