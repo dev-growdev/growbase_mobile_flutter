@@ -8,12 +8,12 @@ import '../../services/get-categories.service.dart';
 
 part 'get-categories.store.g.dart';
 
-class GetCategoriesStore = _GetCategoriesStore with _$GetCategoriesStore;
+class GetCategoriesStore = GetCategoriesStoreBase with _$GetCategoriesStore;
 
-abstract class _GetCategoriesStore with Store {
+abstract class GetCategoriesStoreBase with Store {
   final GetCategoriesService _getCategoriesService;
 
-  _GetCategoriesStore(this._getCategoriesService);
+  GetCategoriesStoreBase(this._getCategoriesService);
 
   @observable
   ObservableList<Category> _state = <Category>[].asObservable();

@@ -16,11 +16,14 @@ class _LoginPageState extends State<LoginPage> {
   final store = LoginStore(GetIt.I());
 
   void doLogin() async {
+    final messenger = ScaffoldMessenger.of(context);
+    final navigator = Navigator.of(context);
+
     final result = await store.signIn();
 
     result
-        ? Navigator.of(context).pushReplacementNamed(Routes.categories)
-        : ScaffoldMessenger.of(context).showSnackBar(
+        ? navigator.pushReplacementNamed(Routes.categories)
+        : messenger.showSnackBar(
             SnackBar(
               content: Text(
                 store.failure?.message ?? 'Erro no login',

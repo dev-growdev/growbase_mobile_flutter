@@ -8,31 +8,31 @@ part of 'get-categories.store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$GetCategoriesStore on _GetCategoriesStore, Store {
+mixin _$GetCategoriesStore on GetCategoriesStoreBase, Store {
   Computed<List<Category>>? _$stateComputed;
 
   @override
   List<Category> get state =>
       (_$stateComputed ??= Computed<List<Category>>(() => super.state,
-              name: '_GetCategoriesStore.state'))
+              name: 'GetCategoriesStoreBase.state'))
           .value;
   Computed<bool>? _$isLoadingComputed;
 
   @override
   bool get isLoading =>
       (_$isLoadingComputed ??= Computed<bool>(() => super.isLoading,
-              name: '_GetCategoriesStore.isLoading'))
+              name: 'GetCategoriesStoreBase.isLoading'))
           .value;
   Computed<Failure?>? _$failureComputed;
 
   @override
   Failure? get failure =>
       (_$failureComputed ??= Computed<Failure?>(() => super.failure,
-              name: '_GetCategoriesStore.failure'))
+              name: 'GetCategoriesStoreBase.failure'))
           .value;
 
   late final _$_stateAtom =
-      Atom(name: '_GetCategoriesStore._state', context: context);
+      Atom(name: 'GetCategoriesStoreBase._state', context: context);
 
   @override
   ObservableList<Category> get _state {
@@ -48,7 +48,7 @@ mixin _$GetCategoriesStore on _GetCategoriesStore, Store {
   }
 
   late final _$_isLoadingAtom =
-      Atom(name: '_GetCategoriesStore._isLoading', context: context);
+      Atom(name: 'GetCategoriesStoreBase._isLoading', context: context);
 
   @override
   bool get _isLoading {
@@ -64,7 +64,7 @@ mixin _$GetCategoriesStore on _GetCategoriesStore, Store {
   }
 
   late final _$_failureAtom =
-      Atom(name: '_GetCategoriesStore._failure', context: context);
+      Atom(name: 'GetCategoriesStoreBase._failure', context: context);
 
   @override
   Failure? get _failure {
@@ -80,7 +80,7 @@ mixin _$GetCategoriesStore on _GetCategoriesStore, Store {
   }
 
   late final _$refreshAsyncAction =
-      AsyncAction('_GetCategoriesStore.refresh', context: context);
+      AsyncAction('GetCategoriesStoreBase.refresh', context: context);
 
   @override
   Future<void> refresh() {
@@ -88,7 +88,7 @@ mixin _$GetCategoriesStore on _GetCategoriesStore, Store {
   }
 
   late final _$getCategoriesAsyncAction =
-      AsyncAction('_GetCategoriesStore.getCategories', context: context);
+      AsyncAction('GetCategoriesStoreBase.getCategories', context: context);
 
   @override
   Future<void> getCategories() {

@@ -8,12 +8,12 @@ import '../../../services/get-category.service.dart';
 
 part 'get-category.store.g.dart';
 
-class GetCategoryStore = _GetCategoryStore with _$GetCategoryStore;
+class GetCategoryStore = GetCategoryStoreBase with _$GetCategoryStore;
 
-abstract class _GetCategoryStore with Store {
+abstract class GetCategoryStoreBase with Store {
   final GetCategoryService _service;
 
-  _GetCategoryStore(this._service);
+  GetCategoryStoreBase(this._service);
 
   @observable
   Category _state = const Category.empty();

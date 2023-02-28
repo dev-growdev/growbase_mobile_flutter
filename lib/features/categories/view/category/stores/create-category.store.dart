@@ -9,12 +9,12 @@ import '../../../services/create-category.service.dart';
 
 part 'create-category.store.g.dart';
 
-class CreateCategoryStore = _CreateCategoryStore with _$CreateCategoryStore;
+class CreateCategoryStore = CreateCategoryStoreBase with _$CreateCategoryStore;
 
-abstract class _CreateCategoryStore with Store {
+abstract class CreateCategoryStoreBase with Store {
   final CreateCategoryService _service;
 
-  _CreateCategoryStore(this._service);
+  CreateCategoryStoreBase(this._service);
 
   @observable
   CategoryDTO _state = CategoryDTO();

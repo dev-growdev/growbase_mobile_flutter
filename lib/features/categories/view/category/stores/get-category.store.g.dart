@@ -8,31 +8,31 @@ part of 'get-category.store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$GetCategoryStore on _GetCategoryStore, Store {
+mixin _$GetCategoryStore on GetCategoryStoreBase, Store {
   Computed<Category>? _$stateComputed;
 
   @override
   Category get state =>
       (_$stateComputed ??= Computed<Category>(() => super.state,
-              name: '_GetCategoryStore.state'))
+              name: 'GetCategoryStoreBase.state'))
           .value;
   Computed<bool>? _$isLoadingComputed;
 
   @override
   bool get isLoading =>
       (_$isLoadingComputed ??= Computed<bool>(() => super.isLoading,
-              name: '_GetCategoryStore.isLoading'))
+              name: 'GetCategoryStoreBase.isLoading'))
           .value;
   Computed<Failure?>? _$failureComputed;
 
   @override
   Failure? get failure =>
       (_$failureComputed ??= Computed<Failure?>(() => super.failure,
-              name: '_GetCategoryStore.failure'))
+              name: 'GetCategoryStoreBase.failure'))
           .value;
 
   late final _$_stateAtom =
-      Atom(name: '_GetCategoryStore._state', context: context);
+      Atom(name: 'GetCategoryStoreBase._state', context: context);
 
   @override
   Category get _state {
@@ -48,7 +48,7 @@ mixin _$GetCategoryStore on _GetCategoryStore, Store {
   }
 
   late final _$_isLoadingAtom =
-      Atom(name: '_GetCategoryStore._isLoading', context: context);
+      Atom(name: 'GetCategoryStoreBase._isLoading', context: context);
 
   @override
   bool get _isLoading {
@@ -64,7 +64,7 @@ mixin _$GetCategoryStore on _GetCategoryStore, Store {
   }
 
   late final _$_failureAtom =
-      Atom(name: '_GetCategoryStore._failure', context: context);
+      Atom(name: 'GetCategoryStoreBase._failure', context: context);
 
   @override
   Failure? get _failure {
@@ -80,7 +80,7 @@ mixin _$GetCategoryStore on _GetCategoryStore, Store {
   }
 
   late final _$getCategoryAsyncAction =
-      AsyncAction('_GetCategoryStore.getCategory', context: context);
+      AsyncAction('GetCategoryStoreBase.getCategory', context: context);
 
   @override
   Future<void> getCategory(String uid) {

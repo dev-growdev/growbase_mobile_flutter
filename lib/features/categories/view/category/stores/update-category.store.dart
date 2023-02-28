@@ -8,12 +8,12 @@ import '../../../services/update-category.service.dart';
 
 part 'update-category.store.g.dart';
 
-class UpdateCategoryStore = _UpdateCategoryStore with _$UpdateCategoryStore;
+class UpdateCategoryStore = UpdateCategoryStoreBase with _$UpdateCategoryStore;
 
-abstract class _UpdateCategoryStore with Store {
+abstract class UpdateCategoryStoreBase with Store {
   final UpdateCategoryService _service;
 
-  _UpdateCategoryStore(this._service);
+  UpdateCategoryStoreBase(this._service);
 
   @observable
   Category _state = const Category.empty();

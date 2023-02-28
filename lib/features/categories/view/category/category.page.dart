@@ -39,19 +39,20 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
   void action() async {
-    final mensager = ScaffoldMessenger.of(context);
+    final messenger = ScaffoldMessenger.of(context);
+    final navigator = Navigator.of(context);
     final result = isNewCategory
         ? await createCategoryStore.createCategory()
         : await updateCategoryStore.updateCategory();
 
     if (result) {
-      mensager.showSnackBar(
+      messenger.showSnackBar(
         const SnackBar(content: Text('Sucesso')),
       );
-      if (!mounted) return;
-      Navigator.of(context).pop();
+
+      navigator.pop();
     } else {
-      mensager.showSnackBar(
+      messenger.showSnackBar(
         SnackBar(
           content: Text(
             createCategoryStore.failure?.message ?? 'Erro ao criar',

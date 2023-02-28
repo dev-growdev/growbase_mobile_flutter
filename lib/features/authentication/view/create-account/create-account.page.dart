@@ -16,9 +16,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   final store = CreateAccountStore(GetIt.I());
 
   void doCreateAccount() async {
+    final messenger = ScaffoldMessenger.of(context);
     final result = await store.createAccount();
 
-    ScaffoldMessenger.of(context).showSnackBar(
+    messenger.showSnackBar(
       SnackBar(
         content: Text(
           result

@@ -8,12 +8,12 @@ import '../../services/create-account.service.dart';
 
 part 'create-account.store.g.dart';
 
-class CreateAccountStore = _CreateAccountStore with _$CreateAccountStore;
+class CreateAccountStore = CreateAccountStoreBase with _$CreateAccountStore;
 
-abstract class _CreateAccountStore with Store {
+abstract class CreateAccountStoreBase with Store {
   final CreateAccountService _service;
 
-  _CreateAccountStore(this._service);
+  CreateAccountStoreBase(this._service);
 
   @observable
   CreateAccountDTO _state = const CreateAccountDTO();

@@ -8,22 +8,24 @@ part of 'login.store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$LoginStore on _LoginStore, Store {
+mixin _$LoginStore on LoginStoreBase, Store {
   Computed<bool>? _$isLoadingComputed;
 
   @override
-  bool get isLoading => (_$isLoadingComputed ??=
-          Computed<bool>(() => super.isLoading, name: '_LoginStore.isLoading'))
-      .value;
+  bool get isLoading =>
+      (_$isLoadingComputed ??= Computed<bool>(() => super.isLoading,
+              name: 'LoginStoreBase.isLoading'))
+          .value;
   Computed<Failure?>? _$failureComputed;
 
   @override
-  Failure? get failure => (_$failureComputed ??=
-          Computed<Failure?>(() => super.failure, name: '_LoginStore.failure'))
-      .value;
+  Failure? get failure =>
+      (_$failureComputed ??= Computed<Failure?>(() => super.failure,
+              name: 'LoginStoreBase.failure'))
+          .value;
 
   late final _$_isLoadingAtom =
-      Atom(name: '_LoginStore._isLoading', context: context);
+      Atom(name: 'LoginStoreBase._isLoading', context: context);
 
   @override
   bool get _isLoading {
@@ -39,7 +41,7 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
   late final _$_failureAtom =
-      Atom(name: '_LoginStore._failure', context: context);
+      Atom(name: 'LoginStoreBase._failure', context: context);
 
   @override
   Failure? get _failure {
@@ -55,46 +57,46 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
   late final _$signInAsyncAction =
-      AsyncAction('_LoginStore.signIn', context: context);
+      AsyncAction('LoginStoreBase.signIn', context: context);
 
   @override
   Future<bool> signIn() {
     return _$signInAsyncAction.run(() => super.signIn());
   }
 
-  late final _$_LoginStoreActionController =
-      ActionController(name: '_LoginStore', context: context);
+  late final _$LoginStoreBaseActionController =
+      ActionController(name: 'LoginStoreBase', context: context);
 
   @override
   void _clearFailure() {
-    final _$actionInfo = _$_LoginStoreActionController.startAction(
-        name: '_LoginStore._clearFailure');
+    final _$actionInfo = _$LoginStoreBaseActionController.startAction(
+        name: 'LoginStoreBase._clearFailure');
     try {
       return super._clearFailure();
     } finally {
-      _$_LoginStoreActionController.endAction(_$actionInfo);
+      _$LoginStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setLogin(String text) {
-    final _$actionInfo =
-        _$_LoginStoreActionController.startAction(name: '_LoginStore.setLogin');
+    final _$actionInfo = _$LoginStoreBaseActionController.startAction(
+        name: 'LoginStoreBase.setLogin');
     try {
       return super.setLogin(text);
     } finally {
-      _$_LoginStoreActionController.endAction(_$actionInfo);
+      _$LoginStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setPass(String text) {
-    final _$actionInfo =
-        _$_LoginStoreActionController.startAction(name: '_LoginStore.setPass');
+    final _$actionInfo = _$LoginStoreBaseActionController.startAction(
+        name: 'LoginStoreBase.setPass');
     try {
       return super.setPass(text);
     } finally {
-      _$_LoginStoreActionController.endAction(_$actionInfo);
+      _$LoginStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

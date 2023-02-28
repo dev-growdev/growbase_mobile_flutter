@@ -7,12 +7,12 @@ import '../../services/login.service.dart';
 
 part 'login.store.g.dart';
 
-class LoginStore = _LoginStore with _$LoginStore;
+class LoginStore = LoginStoreBase with _$LoginStore;
 
-abstract class _LoginStore with Store {
+abstract class LoginStoreBase with Store {
   final LoginService _service;
 
-  _LoginStore(this._service);
+  LoginStoreBase(this._service);
 
   String _login = '';
 

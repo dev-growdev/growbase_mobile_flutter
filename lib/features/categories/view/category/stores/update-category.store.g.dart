@@ -8,31 +8,31 @@ part of 'update-category.store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UpdateCategoryStore on _UpdateCategoryStore, Store {
+mixin _$UpdateCategoryStore on UpdateCategoryStoreBase, Store {
   Computed<Category>? _$stateComputed;
 
   @override
   Category get state =>
       (_$stateComputed ??= Computed<Category>(() => super.state,
-              name: '_UpdateCategoryStore.state'))
+              name: 'UpdateCategoryStoreBase.state'))
           .value;
   Computed<bool>? _$isLoadingComputed;
 
   @override
   bool get isLoading =>
       (_$isLoadingComputed ??= Computed<bool>(() => super.isLoading,
-              name: '_UpdateCategoryStore.isLoading'))
+              name: 'UpdateCategoryStoreBase.isLoading'))
           .value;
   Computed<Failure?>? _$failureComputed;
 
   @override
   Failure? get failure =>
       (_$failureComputed ??= Computed<Failure?>(() => super.failure,
-              name: '_UpdateCategoryStore.failure'))
+              name: 'UpdateCategoryStoreBase.failure'))
           .value;
 
   late final _$_stateAtom =
-      Atom(name: '_UpdateCategoryStore._state', context: context);
+      Atom(name: 'UpdateCategoryStoreBase._state', context: context);
 
   @override
   Category get _state {
@@ -48,7 +48,7 @@ mixin _$UpdateCategoryStore on _UpdateCategoryStore, Store {
   }
 
   late final _$_isLoadingAtom =
-      Atom(name: '_UpdateCategoryStore._isLoading', context: context);
+      Atom(name: 'UpdateCategoryStoreBase._isLoading', context: context);
 
   @override
   bool get _isLoading {
@@ -64,7 +64,7 @@ mixin _$UpdateCategoryStore on _UpdateCategoryStore, Store {
   }
 
   late final _$_failureAtom =
-      Atom(name: '_UpdateCategoryStore._failure', context: context);
+      Atom(name: 'UpdateCategoryStoreBase._failure', context: context);
 
   @override
   Failure? get _failure {
@@ -80,24 +80,24 @@ mixin _$UpdateCategoryStore on _UpdateCategoryStore, Store {
   }
 
   late final _$updateCategoryAsyncAction =
-      AsyncAction('_UpdateCategoryStore.updateCategory', context: context);
+      AsyncAction('UpdateCategoryStoreBase.updateCategory', context: context);
 
   @override
   Future<bool> updateCategory() {
     return _$updateCategoryAsyncAction.run(() => super.updateCategory());
   }
 
-  late final _$_UpdateCategoryStoreActionController =
-      ActionController(name: '_UpdateCategoryStore', context: context);
+  late final _$UpdateCategoryStoreBaseActionController =
+      ActionController(name: 'UpdateCategoryStoreBase', context: context);
 
   @override
   void setState({String? uid, String? name, String? description}) {
-    final _$actionInfo = _$_UpdateCategoryStoreActionController.startAction(
-        name: '_UpdateCategoryStore.setState');
+    final _$actionInfo = _$UpdateCategoryStoreBaseActionController.startAction(
+        name: 'UpdateCategoryStoreBase.setState');
     try {
       return super.setState(uid: uid, name: name, description: description);
     } finally {
-      _$_UpdateCategoryStoreActionController.endAction(_$actionInfo);
+      _$UpdateCategoryStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
