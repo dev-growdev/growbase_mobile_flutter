@@ -22,8 +22,10 @@ class ApiAdapter implements IHttpAdapter {
   ApiAdapter(this._dio);
 
   @override
-  Future<Map<String, dynamic>> get(String url,
-      {Map<String, String>? queryParameters}) async {
+  Future<Map<String, dynamic>> get(
+    String url, {
+    Map<String, String>? queryParameters,
+  }) async {
     var result = await _dio.get(
       url,
       options: Options(headers: Constants.headerApi),

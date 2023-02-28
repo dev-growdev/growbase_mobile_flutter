@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.19.1 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,12 +31,11 @@ dependencies:
     sdk: flutter
 
   get_it: ^7.2.0
-  dio: ^4.0.6
-  connectivity_plus: ^2.3.0
-  shared_preferences: ^2.0.14
+  dio: ^5.0.1
+  shared_preferences: ^2.0.18
   dartz: ^0.10.1
-  mobx: ^2.0.7
-  flutter_mobx: 2.0.6+1
+  mobx: ^2.1.4
+  flutter_mobx: 2.0.6+5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -47,15 +46,15 @@ dev_dependencies:
     sdk: flutter
 
   mocktail: ^0.3.0
-  build_runner: ^2.1.11
-  mobx_codegen: ^2.0.7
+  build_runner: ^2.3.3
+  mobx_codegen: ^2.1.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

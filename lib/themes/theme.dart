@@ -6,10 +6,6 @@ const Color _primaryColor = Color(0xFF008065);
 ThemeData lightTheme() {
   return ThemeData(
     primaryColor: _primaryColor,
-    colorScheme: ColorScheme.fromSwatch().copyWith(
-      brightness: Brightness.light,
-      primary: _primaryColor,
-    ),
     fontFamily: 'Inter',
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
@@ -22,46 +18,45 @@ ThemeData lightTheme() {
         color: _primaryColor,
       ),
     ),
-    backgroundColor: const Color(0xFFF5F5F5),
     scaffoldBackgroundColor: const Color(0xFFF5F5F5),
     dialogBackgroundColor: Colors.white,
     cardColor: Colors.white, // Containers and Cards background
     canvasColor: const Color(0xFFF5F5F5), // Dropdown background
     textTheme: const TextTheme(
       /// Topo de página
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 20,
         color: Colors.black,
       ),
 
       /// Título de conteúdo
-      headline2: TextStyle(
+      displayMedium: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
         color: Colors.black,
       ),
 
       /// Descrição de conteúdo
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 18,
         color: Colors.black,
       ),
 
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 16,
         color: Colors.black,
       ),
 
-      button: TextStyle(
+      labelLarge: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
       ),
 
       // /// Para textos dentro dos inputs
-      subtitle1: TextStyle(
+      titleMedium: TextStyle(
         fontWeight: FontWeight.normal,
         fontSize: 18,
         color: Colors.black,
@@ -123,16 +118,18 @@ ThemeData lightTheme() {
         colorCard: const Color(0XFFFFFFFF),
       ),
     ],
+    colorScheme: ColorScheme.fromSwatch()
+        .copyWith(
+          brightness: Brightness.light,
+          primary: _primaryColor,
+        )
+        .copyWith(background: const Color(0xFFF5F5F5)),
   );
 }
 
 ThemeData darkTheme() {
   return ThemeData(
     primaryColor: _primaryColor,
-    colorScheme: ColorScheme.fromSwatch().copyWith(
-      brightness: Brightness.dark,
-      primary: _primaryColor,
-    ),
     fontFamily: 'Inter',
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0XFF2D2825),
@@ -145,47 +142,46 @@ ThemeData darkTheme() {
         color: _primaryColor,
       ),
     ),
-    backgroundColor: const Color(0XFF2D2825),
     scaffoldBackgroundColor: const Color(0XFF2D2825),
     dialogBackgroundColor: const Color(0XFF463E3A),
     cardColor: const Color(0XFF463E3A), // Containers and Cards background
     canvasColor: const Color(0XFF2D2825), // Dropdown background
     textTheme: const TextTheme(
       /// Topo de página
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 20,
         color: Colors.white,
       ),
 
       /// Título de conteúdo
-      headline2: TextStyle(
+      displayMedium: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
         color: Colors.white,
       ),
 
       /// Descrição de conteúdo
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 18,
         color: Colors.white,
       ),
 
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 16,
         color: Colors.white,
       ),
 
-      button: TextStyle(
+      labelLarge: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
         color: Colors.white,
       ),
 
       // /// Para textos dentro dos inputs
-      subtitle1: TextStyle(
+      titleMedium: TextStyle(
         fontWeight: FontWeight.normal,
         fontSize: 18,
         color: Colors.white,
@@ -246,5 +242,11 @@ ThemeData darkTheme() {
         colorCard: const Color(0XFF463E3A),
       ),
     ],
+    colorScheme: ColorScheme.fromSwatch()
+        .copyWith(
+          brightness: Brightness.dark,
+          primary: _primaryColor,
+        )
+        .copyWith(background: const Color(0XFF2D2825)),
   );
 }
