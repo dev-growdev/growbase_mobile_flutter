@@ -36,11 +36,13 @@ abstract class LoginStoreBase with Store {
   @action
   void setLogin(String text) {
     _login = text;
+    _clearFailure();
   }
 
   @action
   void setPass(String text) {
     _pass = text;
+    _clearFailure();
   }
 
   @action
