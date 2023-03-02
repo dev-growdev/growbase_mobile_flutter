@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../../shared/adapters/make-request.adapter.dart';
+import '../../../../../shared/adapters/make_request.adapter.dart';
 import '../../../../../shared/errors/failures.dart';
 import '../../../dtos/category.dto.dart';
 import '../../../entities/category.entity.dart';
-import '../../../services/create-category.service.dart';
+import '../../../services/create_category.service.dart';
 
-part 'create-category.store.g.dart';
+part 'create_category.store.g.dart';
 
 class CreateCategoryStore = CreateCategoryStoreBase with _$CreateCategoryStore;
 

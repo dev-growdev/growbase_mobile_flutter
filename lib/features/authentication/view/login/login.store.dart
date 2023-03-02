@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../shared/adapters/make-request.adapter.dart';
+import '../../../../shared/adapters/make_request.adapter.dart';
 import '../../../../shared/errors/failures.dart';
 import '../../services/login.service.dart';
 

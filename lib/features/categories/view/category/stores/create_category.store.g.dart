@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get-category.store.dart';
+part of 'create_category.store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,47 +8,47 @@ part of 'get-category.store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$GetCategoryStore on GetCategoryStoreBase, Store {
-  Computed<Category>? _$stateComputed;
+mixin _$CreateCategoryStore on CreateCategoryStoreBase, Store {
+  Computed<CategoryDTO>? _$stateComputed;
 
   @override
-  Category get state =>
-      (_$stateComputed ??= Computed<Category>(() => super.state,
-              name: 'GetCategoryStoreBase.state'))
+  CategoryDTO get state =>
+      (_$stateComputed ??= Computed<CategoryDTO>(() => super.state,
+              name: 'CreateCategoryStoreBase.state'))
           .value;
   Computed<bool>? _$isLoadingComputed;
 
   @override
   bool get isLoading =>
       (_$isLoadingComputed ??= Computed<bool>(() => super.isLoading,
-              name: 'GetCategoryStoreBase.isLoading'))
+              name: 'CreateCategoryStoreBase.isLoading'))
           .value;
   Computed<Failure?>? _$failureComputed;
 
   @override
   Failure? get failure =>
       (_$failureComputed ??= Computed<Failure?>(() => super.failure,
-              name: 'GetCategoryStoreBase.failure'))
+              name: 'CreateCategoryStoreBase.failure'))
           .value;
 
   late final _$_stateAtom =
-      Atom(name: 'GetCategoryStoreBase._state', context: context);
+      Atom(name: 'CreateCategoryStoreBase._state', context: context);
 
   @override
-  Category get _state {
+  CategoryDTO get _state {
     _$_stateAtom.reportRead();
     return super._state;
   }
 
   @override
-  set _state(Category value) {
+  set _state(CategoryDTO value) {
     _$_stateAtom.reportWrite(value, super._state, () {
       super._state = value;
     });
   }
 
   late final _$_isLoadingAtom =
-      Atom(name: 'GetCategoryStoreBase._isLoading', context: context);
+      Atom(name: 'CreateCategoryStoreBase._isLoading', context: context);
 
   @override
   bool get _isLoading {
@@ -64,7 +64,7 @@ mixin _$GetCategoryStore on GetCategoryStoreBase, Store {
   }
 
   late final _$_failureAtom =
-      Atom(name: 'GetCategoryStoreBase._failure', context: context);
+      Atom(name: 'CreateCategoryStoreBase._failure', context: context);
 
   @override
   Failure? get _failure {
@@ -79,12 +79,26 @@ mixin _$GetCategoryStore on GetCategoryStoreBase, Store {
     });
   }
 
-  late final _$getCategoryAsyncAction =
-      AsyncAction('GetCategoryStoreBase.getCategory', context: context);
+  late final _$createCategoryAsyncAction =
+      AsyncAction('CreateCategoryStoreBase.createCategory', context: context);
 
   @override
-  Future<void> getCategory(String uid) {
-    return _$getCategoryAsyncAction.run(() => super.getCategory(uid));
+  Future<bool> createCategory() {
+    return _$createCategoryAsyncAction.run(() => super.createCategory());
+  }
+
+  late final _$CreateCategoryStoreBaseActionController =
+      ActionController(name: 'CreateCategoryStoreBase', context: context);
+
+  @override
+  void setState({String? name, String? description}) {
+    final _$actionInfo = _$CreateCategoryStoreBaseActionController.startAction(
+        name: 'CreateCategoryStoreBase.setState');
+    try {
+      return super.setState(name: name, description: description);
+    } finally {
+      _$CreateCategoryStoreBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override

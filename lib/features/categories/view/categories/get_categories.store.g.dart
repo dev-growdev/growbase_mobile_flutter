@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'update-category.store.dart';
+part of 'get_categories.store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,47 +8,47 @@ part of 'update-category.store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UpdateCategoryStore on UpdateCategoryStoreBase, Store {
-  Computed<Category>? _$stateComputed;
+mixin _$GetCategoriesStore on GetCategoriesStoreBase, Store {
+  Computed<List<Category>>? _$stateComputed;
 
   @override
-  Category get state =>
-      (_$stateComputed ??= Computed<Category>(() => super.state,
-              name: 'UpdateCategoryStoreBase.state'))
+  List<Category> get state =>
+      (_$stateComputed ??= Computed<List<Category>>(() => super.state,
+              name: 'GetCategoriesStoreBase.state'))
           .value;
   Computed<bool>? _$isLoadingComputed;
 
   @override
   bool get isLoading =>
       (_$isLoadingComputed ??= Computed<bool>(() => super.isLoading,
-              name: 'UpdateCategoryStoreBase.isLoading'))
+              name: 'GetCategoriesStoreBase.isLoading'))
           .value;
   Computed<Failure?>? _$failureComputed;
 
   @override
   Failure? get failure =>
       (_$failureComputed ??= Computed<Failure?>(() => super.failure,
-              name: 'UpdateCategoryStoreBase.failure'))
+              name: 'GetCategoriesStoreBase.failure'))
           .value;
 
   late final _$_stateAtom =
-      Atom(name: 'UpdateCategoryStoreBase._state', context: context);
+      Atom(name: 'GetCategoriesStoreBase._state', context: context);
 
   @override
-  Category get _state {
+  ObservableList<Category> get _state {
     _$_stateAtom.reportRead();
     return super._state;
   }
 
   @override
-  set _state(Category value) {
+  set _state(ObservableList<Category> value) {
     _$_stateAtom.reportWrite(value, super._state, () {
       super._state = value;
     });
   }
 
   late final _$_isLoadingAtom =
-      Atom(name: 'UpdateCategoryStoreBase._isLoading', context: context);
+      Atom(name: 'GetCategoriesStoreBase._isLoading', context: context);
 
   @override
   bool get _isLoading {
@@ -64,7 +64,7 @@ mixin _$UpdateCategoryStore on UpdateCategoryStoreBase, Store {
   }
 
   late final _$_failureAtom =
-      Atom(name: 'UpdateCategoryStoreBase._failure', context: context);
+      Atom(name: 'GetCategoriesStoreBase._failure', context: context);
 
   @override
   Failure? get _failure {
@@ -79,26 +79,20 @@ mixin _$UpdateCategoryStore on UpdateCategoryStoreBase, Store {
     });
   }
 
-  late final _$updateCategoryAsyncAction =
-      AsyncAction('UpdateCategoryStoreBase.updateCategory', context: context);
+  late final _$refreshAsyncAction =
+      AsyncAction('GetCategoriesStoreBase.refresh', context: context);
 
   @override
-  Future<bool> updateCategory() {
-    return _$updateCategoryAsyncAction.run(() => super.updateCategory());
+  Future<void> refresh() {
+    return _$refreshAsyncAction.run(() => super.refresh());
   }
 
-  late final _$UpdateCategoryStoreBaseActionController =
-      ActionController(name: 'UpdateCategoryStoreBase', context: context);
+  late final _$getCategoriesAsyncAction =
+      AsyncAction('GetCategoriesStoreBase.getCategories', context: context);
 
   @override
-  void setState({String? uid, String? name, String? description}) {
-    final _$actionInfo = _$UpdateCategoryStoreBaseActionController.startAction(
-        name: 'UpdateCategoryStoreBase.setState');
-    try {
-      return super.setState(uid: uid, name: name, description: description);
-    } finally {
-      _$UpdateCategoryStoreBaseActionController.endAction(_$actionInfo);
-    }
+  Future<void> getCategories() {
+    return _$getCategoriesAsyncAction.run(() => super.getCategories());
   }
 
   @override

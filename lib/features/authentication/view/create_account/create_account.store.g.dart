@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'create-category.store.dart';
+part of 'create_account.store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,47 +8,47 @@ part of 'create-category.store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$CreateCategoryStore on CreateCategoryStoreBase, Store {
-  Computed<CategoryDTO>? _$stateComputed;
+mixin _$CreateAccountStore on CreateAccountStoreBase, Store {
+  Computed<CreateAccountDTO>? _$stateComputed;
 
   @override
-  CategoryDTO get state =>
-      (_$stateComputed ??= Computed<CategoryDTO>(() => super.state,
-              name: 'CreateCategoryStoreBase.state'))
+  CreateAccountDTO get state =>
+      (_$stateComputed ??= Computed<CreateAccountDTO>(() => super.state,
+              name: 'CreateAccountStoreBase.state'))
           .value;
   Computed<bool>? _$isLoadingComputed;
 
   @override
   bool get isLoading =>
       (_$isLoadingComputed ??= Computed<bool>(() => super.isLoading,
-              name: 'CreateCategoryStoreBase.isLoading'))
+              name: 'CreateAccountStoreBase.isLoading'))
           .value;
   Computed<Failure?>? _$failureComputed;
 
   @override
   Failure? get failure =>
       (_$failureComputed ??= Computed<Failure?>(() => super.failure,
-              name: 'CreateCategoryStoreBase.failure'))
+              name: 'CreateAccountStoreBase.failure'))
           .value;
 
   late final _$_stateAtom =
-      Atom(name: 'CreateCategoryStoreBase._state', context: context);
+      Atom(name: 'CreateAccountStoreBase._state', context: context);
 
   @override
-  CategoryDTO get _state {
+  CreateAccountDTO get _state {
     _$_stateAtom.reportRead();
     return super._state;
   }
 
   @override
-  set _state(CategoryDTO value) {
+  set _state(CreateAccountDTO value) {
     _$_stateAtom.reportWrite(value, super._state, () {
       super._state = value;
     });
   }
 
   late final _$_isLoadingAtom =
-      Atom(name: 'CreateCategoryStoreBase._isLoading', context: context);
+      Atom(name: 'CreateAccountStoreBase._isLoading', context: context);
 
   @override
   bool get _isLoading {
@@ -64,7 +64,7 @@ mixin _$CreateCategoryStore on CreateCategoryStoreBase, Store {
   }
 
   late final _$_failureAtom =
-      Atom(name: 'CreateCategoryStoreBase._failure', context: context);
+      Atom(name: 'CreateAccountStoreBase._failure', context: context);
 
   @override
   Failure? get _failure {
@@ -79,25 +79,38 @@ mixin _$CreateCategoryStore on CreateCategoryStoreBase, Store {
     });
   }
 
-  late final _$createCategoryAsyncAction =
-      AsyncAction('CreateCategoryStoreBase.createCategory', context: context);
+  late final _$createAccountAsyncAction =
+      AsyncAction('CreateAccountStoreBase.createAccount', context: context);
 
   @override
-  Future<bool> createCategory() {
-    return _$createCategoryAsyncAction.run(() => super.createCategory());
+  Future<bool> createAccount() {
+    return _$createAccountAsyncAction.run(() => super.createAccount());
   }
 
-  late final _$CreateCategoryStoreBaseActionController =
-      ActionController(name: 'CreateCategoryStoreBase', context: context);
+  late final _$CreateAccountStoreBaseActionController =
+      ActionController(name: 'CreateAccountStoreBase', context: context);
 
   @override
-  void setState({String? name, String? description}) {
-    final _$actionInfo = _$CreateCategoryStoreBaseActionController.startAction(
-        name: 'CreateCategoryStoreBase.setState');
+  void clearFailure() {
+    final _$actionInfo = _$CreateAccountStoreBaseActionController.startAction(
+        name: 'CreateAccountStoreBase.clearFailure');
     try {
-      return super.setState(name: name, description: description);
+      return super.clearFailure();
     } finally {
-      _$CreateCategoryStoreBaseActionController.endAction(_$actionInfo);
+      _$CreateAccountStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void _setState(
+      {String? name, String? email, String? document, String? password}) {
+    final _$actionInfo = _$CreateAccountStoreBaseActionController.startAction(
+        name: 'CreateAccountStoreBase._setState');
+    try {
+      return super._setState(
+          name: name, email: email, document: document, password: password);
+    } finally {
+      _$CreateAccountStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

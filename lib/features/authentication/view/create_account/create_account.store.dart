@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../shared/adapters/make-request.adapter.dart';
+import '../../../../shared/adapters/make_request.adapter.dart';
 import '../../../../shared/errors/failures.dart';
 import '../../dtos/create-account.dto.dart';
 import '../../services/create-account.service.dart';
 
-part 'create-account.store.g.dart';
+part 'create_account.store.g.dart';
 
 class CreateAccountStore = CreateAccountStoreBase with _$CreateAccountStore;
 
@@ -17,6 +17,9 @@ abstract class CreateAccountStoreBase with Store {
 
   @observable
   CreateAccountDTO _state = const CreateAccountDTO();
+
+  @computed
+  CreateAccountDTO get state => _state;
 
   @observable
   bool _isLoading = false;
@@ -31,10 +34,10 @@ abstract class CreateAccountStoreBase with Store {
   Failure? get failure => _failure;
 
   @action
-  void _clearFailure() => _failure = null;
+  void clearFailure() => _failure = null;
 
   @action
-  void setState({
+  void _setState({
     String? name,
     String? email,
     String? document,
@@ -47,9 +50,14 @@ abstract class CreateAccountStoreBase with Store {
         password: password,
       );
 
+  void setName(String name) => _setState(name: name);
+  void setEmail(String email) => _setState(email: email);
+  void setDocument(String document) => _setState(document: document);
+  void setPassword(String password) => _setState(password: password);
+
   @action
   Future<bool> createAccount() async {
-    _clearFailure();
+    clearFailure();
     _isLoading = true;
 
     final resultOrError = await makeRequest(() => _service.call(_state));

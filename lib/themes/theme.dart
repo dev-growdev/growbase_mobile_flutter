@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app-colors.theme-extension.dart';
+import 'app_colors.theme_extension.dart';
 
 const Color _primaryColor = Color(0xFF004C97);
 

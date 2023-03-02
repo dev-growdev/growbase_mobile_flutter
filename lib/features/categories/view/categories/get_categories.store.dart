@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:growbase_mobile_flutter/shared/adapters/make-request.adapter.dart';
+import 'package:growbase_mobile_flutter/shared/adapters/make_request.adapter.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../shared/errors/failures.dart';
 import '../../entities/category.entity.dart';
-import '../../services/get-categories.service.dart';
+import '../../services/get_categories.service.dart';
 
-part 'get-categories.store.g.dart';
+part 'get_categories.store.g.dart';
 
 class GetCategoriesStore = GetCategoriesStoreBase with _$GetCategoriesStore;
 

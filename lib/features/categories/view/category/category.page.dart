@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-import 'stores/create-category.store.dart';
-import 'stores/get-category.store.dart';
-import 'stores/update-category.store.dart';
+import 'stores/create_category.store.dart';
+import 'stores/get_category.store.dart';
+import 'stores/update_category.store.dart';
 
 class CategoryPage extends StatefulWidget {
   final String? uid;

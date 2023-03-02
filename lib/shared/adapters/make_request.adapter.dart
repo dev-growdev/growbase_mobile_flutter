@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-import '../dtos/invalid-field.dto.dart';
+import '../dtos/invalid_field.dto.dart';
 import '../errors/failures.dart';
 
 Future<Either<Failure, T>> makeRequest<T>(Future<T> Function() func) async {

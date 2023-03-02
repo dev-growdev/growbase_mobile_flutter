@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/view/widgets/custom-page.widget.dart';
+import '../../../shared/view/widgets/body_layout.widget.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -14,7 +14,8 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SafeArea(
-      child: CustomPage(
+      child: BodyLayout(
+        hasAppBar: false,
         padding: const EdgeInsets.symmetric(horizontal: 16),
         bottomWidget: const _ByGrowdev(),
         child: Column(

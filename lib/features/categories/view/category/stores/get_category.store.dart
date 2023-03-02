@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../../shared/adapters/make-request.adapter.dart';
+import '../../../../../shared/adapters/make_request.adapter.dart';
 import '../../../../../shared/errors/failures.dart';
 import '../../../entities/category.entity.dart';
-import '../../../services/get-category.service.dart';
+import '../../../services/get_category.service.dart';
 
-part 'get-category.store.g.dart';
+part 'get_category.store.g.dart';
 
 class GetCategoryStore = GetCategoryStoreBase with _$GetCategoryStore;
 

@@ -3,10 +3,10 @@ import 'package:get_it/get_it.dart';
 
 import 'features/authentication/services/create-account.service.dart';
 import 'features/authentication/services/login.service.dart';
-import 'features/categories/services/create-category.service.dart';
-import 'features/categories/services/get-categories.service.dart';
-import 'features/categories/services/get-category.service.dart';
-import 'features/categories/services/update-category.service.dart';
+import 'features/categories/services/create_category.service.dart';
+import 'features/categories/services/get_categories.service.dart';
+import 'features/categories/services/get_category.service.dart';
+import 'features/categories/services/update_category.service.dart';
 import 'shared/adapters/api.adapter.dart';
 import 'utils/constants.dart';
 
