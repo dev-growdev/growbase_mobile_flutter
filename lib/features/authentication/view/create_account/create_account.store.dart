@@ -4,7 +4,7 @@ import 'package:mobx/mobx.dart';
 import '../../../../shared/adapters/make_request.adapter.dart';
 import '../../../../shared/errors/failures.dart';
 import '../../dtos/create-account.dto.dart';
-import '../../services/create-account.service.dart';
+import '../../services/create_account.service.dart';
 
 part 'create_account.store.g.dart';
 

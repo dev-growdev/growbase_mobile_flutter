@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:growbase_mobile_flutter/shared/adapters/make-request.adapter.dart';
-import 'package:growbase_mobile_flutter/shared/dtos/invalid-field.dto.dart';
+import 'package:growbase_mobile_flutter/shared/adapters/make_request.adapter.dart';
+import 'package:growbase_mobile_flutter/shared/dtos/invalid_field.dto.dart';
 import 'package:growbase_mobile_flutter/shared/errors/failures.dart';
 import 'package:mocktail/mocktail.dart';
 

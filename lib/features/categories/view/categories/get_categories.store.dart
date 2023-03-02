@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:growbase_mobile_flutter/shared/adapters/make_request.adapter.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../../shared/adapters/make_request.adapter.dart';
 import '../../../../shared/errors/failures.dart';
 import '../../entities/category.entity.dart';
 import '../../services/get_categories.service.dart';

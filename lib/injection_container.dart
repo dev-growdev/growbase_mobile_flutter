@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import 'features/authentication/services/create-account.service.dart';
+import 'features/authentication/services/create_account.service.dart';
 import 'features/authentication/services/login.service.dart';
 import 'features/categories/services/create_category.service.dart';
 import 'features/categories/services/get_categories.service.dart';

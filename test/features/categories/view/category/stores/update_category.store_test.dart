@@ -1,26 +1,30 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:growbase_mobile_flutter/features/categories/services/create-category.service.dart';
-import 'package:growbase_mobile_flutter/features/categories/view/category/stores/create-category.store.dart';
+import 'package:growbase_mobile_flutter/features/categories/entities/category.entity.dart';
+import 'package:growbase_mobile_flutter/features/categories/services/update_category.service.dart';
+import 'package:growbase_mobile_flutter/features/categories/view/category/stores/update_category.store.dart';
 import 'package:growbase_mobile_flutter/shared/adapters/api.adapter.dart';
 import 'package:growbase_mobile_flutter/shared/errors/failures.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../../../builders/features/categories/category.entity.builder.dart';
+
 class MockDio extends Mock implements Dio {}
 
-CreateCategoryStore makeStore(Dio dio) => CreateCategoryStore(
-      CreateCategoryService(
+UpdateCategoryStore makeStore(Dio dio) => UpdateCategoryStore(
+      UpdateCategoryService(
         ApiAdapter(dio),
       ),
     );
 
 void main() {
   final dio = MockDio();
+  const categoryUid = 'any_uid';
 
-  group('CreateCategoryStore', () {
-    test('Deve retornar um true ao criar a categoria', () async {
+  group('UpdateCategoryStore', () {
+    test('Deve retornar um true ao atualizar uma categoria', () async {
       final store = makeStore(dio);
-      when(() => dio.post('/categories',
+      when(() => dio.put('/categories/$categoryUid',
           data: any(named: 'data'), options: any(named: 'options'))).thenAnswer(
         (_) => Future.value(
           Response(
@@ -29,11 +33,9 @@ void main() {
               'success': true,
               'code': 200,
               'data': {
-                'user': {
-                  'uid': 'any_uid',
-                  'name': 'any_name',
-                  'description': 'any_description',
-                }
+                'uid': 'any_uid',
+                'name': 'any_name',
+                'description': 'any_description',
               },
             },
             statusCode: 200,
@@ -43,21 +45,27 @@ void main() {
 
       expect(store.isLoading, isFalse);
       expect(store.failure, isNull);
+      expect(store.state, equals(const Category.empty()));
 
-      store.setState(name: 'any_name', description: 'any_description');
+      store.setState(
+        uid: categoryUid,
+        name: 'any_name',
+        description: 'any_description',
+      );
 
-      final result = await store.createCategory();
+      final result = await store.updateCategory();
 
       expect(store.isLoading, isFalse);
       expect(store.failure, isNull);
       expect(result, isTrue);
+      expect(store.state, equals(CategoryBuilder.init().build()));
     });
 
     test(
-        'Deve retornar um false e setar o failure com o erro ao criar a categoria',
+        'Deve retornar um false e setar o failure com o erro ao atualizar uma categoria',
         () async {
       final store = makeStore(dio);
-      when(() => dio.post('/categories',
+      when(() => dio.put('/categories/$categoryUid',
           data: any(named: 'data'), options: any(named: 'options'))).thenThrow(
         DioError(
           requestOptions: RequestOptions(path: ''),
@@ -79,14 +87,20 @@ void main() {
 
       expect(store.isLoading, isFalse);
       expect(store.failure, isNull);
+      expect(store.state, equals(const Category.empty()));
 
-      store.setState(name: 'any_name', description: 'any_description');
+      store.setState(
+        uid: categoryUid,
+        name: 'any_name',
+        description: 'any_description',
+      );
 
-      final result = await store.createCategory();
+      final result = await store.updateCategory();
 
       expect(store.isLoading, isFalse);
       expect(store.failure, ServerFailure('Erro genérico'));
       expect(result, isFalse);
+      expect(store.state, equals(CategoryBuilder.init().build()));
     });
   });
 }

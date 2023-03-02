@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:growbase_mobile_flutter/features/categories/services/get-categories.service.dart';
-import 'package:growbase_mobile_flutter/features/categories/view/categories/get-categories.store.dart';
+import 'package:growbase_mobile_flutter/features/categories/services/get_categories.service.dart';
+import 'package:growbase_mobile_flutter/features/categories/view/categories/get_categories.store.dart';
 import 'package:growbase_mobile_flutter/shared/adapters/api.adapter.dart';
 import 'package:growbase_mobile_flutter/shared/errors/failures.dart';
 import 'package:mocktail/mocktail.dart';

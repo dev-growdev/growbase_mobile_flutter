@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:growbase_mobile_flutter/features/authentication/services/create-account.service.dart';
-import 'package:growbase_mobile_flutter/features/authentication/view/create-account/create-account.store.dart';
+import 'package:growbase_mobile_flutter/features/categories/services/create_category.service.dart';
+import 'package:growbase_mobile_flutter/features/categories/view/category/stores/create_category.store.dart';
 import 'package:growbase_mobile_flutter/shared/adapters/api.adapter.dart';
 import 'package:growbase_mobile_flutter/shared/errors/failures.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockDio extends Mock implements Dio {}
 
-CreateAccountStore makeStore(Dio dio) => CreateAccountStore(
-      CreateAccountService(
+CreateCategoryStore makeStore(Dio dio) => CreateCategoryStore(
+      CreateCategoryService(
         ApiAdapter(dio),
       ),
     );
@@ -17,10 +17,10 @@ CreateAccountStore makeStore(Dio dio) => CreateAccountStore(
 void main() {
   final dio = MockDio();
 
-  group('CreateAccountStore', () {
-    test('Deve retornar um true ao criar a conta', () async {
+  group('CreateCategoryStore', () {
+    test('Deve retornar um true ao criar a categoria', () async {
       final store = makeStore(dio);
-      when(() => dio.post('/signup',
+      when(() => dio.post('/categories',
           data: any(named: 'data'), options: any(named: 'options'))).thenAnswer(
         (_) => Future.value(
           Response(
@@ -29,10 +29,11 @@ void main() {
               'success': true,
               'code': 200,
               'data': {
-                'uid': 'any_uid',
-                'email': 'any_email',
-                'name': 'any_name',
-                'document': 'any_document',
+                'user': {
+                  'uid': 'any_uid',
+                  'name': 'any_name',
+                  'description': 'any_description',
+                }
               },
             },
             statusCode: 200,
@@ -43,24 +44,20 @@ void main() {
       expect(store.isLoading, isFalse);
       expect(store.failure, isNull);
 
-      store.setState(
-        name: 'any_uid',
-        email: 'any_email',
-        document: 'any_document',
-        password: 'any_pass',
-      );
+      store.setState(name: 'any_name', description: 'any_description');
 
-      final result = await store.createAccount();
+      final result = await store.createCategory();
 
       expect(store.isLoading, isFalse);
       expect(store.failure, isNull);
       expect(result, isTrue);
     });
 
-    test('Deve retornar um false e setar o failure com o erro ao criar a conta',
+    test(
+        'Deve retornar um false e setar o failure com o erro ao criar a categoria',
         () async {
       final store = makeStore(dio);
-      when(() => dio.post('/signup',
+      when(() => dio.post('/categories',
           data: any(named: 'data'), options: any(named: 'options'))).thenThrow(
         DioError(
           requestOptions: RequestOptions(path: ''),
@@ -83,14 +80,9 @@ void main() {
       expect(store.isLoading, isFalse);
       expect(store.failure, isNull);
 
-      store.setState(
-        name: 'any_uid',
-        email: 'any_email',
-        document: 'any_document',
-        password: 'any_pass',
-      );
+      store.setState(name: 'any_name', description: 'any_description');
 
-      final result = await store.createAccount();
+      final result = await store.createCategory();
 
       expect(store.isLoading, isFalse);
       expect(store.failure, ServerFailure('Erro genérico'));

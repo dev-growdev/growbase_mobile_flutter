@@ -1,7 +1,6 @@
-import 'package:growbase_mobile_flutter/utils/constants.dart';
-
 import '../../../shared/adapters/api.adapter.dart';
 import '../../../shared/entities/user.entity.dart';
+import '../../../utils/constants.dart';
 
 class LoginService {
   final IHttpAdapter _http;

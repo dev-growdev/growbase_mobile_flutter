@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:growbase_mobile_flutter/features/categories/services/get-category.service.dart';
+import 'package:growbase_mobile_flutter/features/categories/services/update_category.service.dart';
 import 'package:growbase_mobile_flutter/shared/adapters/api.adapter.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -9,14 +9,15 @@ class MockHttpClient extends Mock implements IHttpAdapter {}
 
 void main() {
   final IHttpAdapter http = MockHttpClient();
-  final GetCategoryService sut = GetCategoryService(http);
+  final UpdateCategoryService sut = UpdateCategoryService(http);
 
   tearDown(() => reset(http));
 
-  group('GetCategoryService -', () {
-    const categoryUid = 'any_uid';
+  group('UpdateCategoryService -', () {
+    final category = CategoryBuilder.init().build();
     test('deve chamar o método get do http com as informações', () async {
-      when(() => http.get('/categories/$categoryUid')).thenAnswer(
+      when(() => http.put('/categories/${category.uid}', category.toMap()))
+          .thenAnswer(
         (_) async => {
           'data': {
             'uid': 'any_uid',
@@ -26,13 +27,14 @@ void main() {
         },
       );
 
-      await sut.call(categoryUid);
+      await sut.call(category);
 
-      verify(() => http.get('/categories/$categoryUid')).called(1);
+      verify(() => http.put('/categories/${category.uid}', category.toMap()))
+          .called(1);
     });
 
-    test('Deve retornar uma Category', () async {
-      when(() => http.get(any())).thenAnswer(
+    test('Deve retornar um true', () async {
+      when(() => http.put(any(), any())).thenAnswer(
         (_) async => {
           'success': true,
           'code': 200,
@@ -44,9 +46,9 @@ void main() {
         },
       );
 
-      final result = await sut.call(categoryUid);
+      final result = await sut.call(category);
 
-      expect(result, equals(CategoryBuilder.init().build()));
+      expect(result, isTrue);
     });
   });
 }

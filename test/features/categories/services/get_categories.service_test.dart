@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:growbase_mobile_flutter/features/categories/services/get-categories.service.dart';
+import 'package:growbase_mobile_flutter/features/categories/services/get_categories.service.dart';
 import 'package:growbase_mobile_flutter/shared/adapters/api.adapter.dart';
 import 'package:mocktail/mocktail.dart';
 
