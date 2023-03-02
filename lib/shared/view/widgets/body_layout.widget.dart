@@ -1,16 +1,17 @@
-
 import 'package:flutter/material.dart';
 
-class CustomPage extends StatelessWidget {
+class BodyLayout extends StatelessWidget {
   final Widget child;
   final Widget? bottomWidget;
   final EdgeInsetsGeometry? padding;
+  final bool hasAppBar;
 
-  const CustomPage({
+  const BodyLayout({
     Key? key,
     required this.child,
     this.bottomWidget,
     this.padding = const EdgeInsets.all(16),
+    this.hasAppBar = true,
   }) : super(key: key);
 
   @override
@@ -21,7 +22,8 @@ class CustomPage extends StatelessWidget {
           padding: padding,
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              minHeight: constraints.maxHeight,
+              minHeight:
+                  constraints.maxHeight - (hasAppBar ? kTextTabBarHeight : 0),
               minWidth: constraints.minWidth,
             ),
             child: IntrinsicHeight(
