@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../shared/view/widgets/password-input.widget.dart';
-import '../../../../shared/view/widgets/primary-button.widget.dart';
-import '../../../../shared/view/widgets/terms-and-policy.widget.dart';
+import '../../../../shared/view/widgets/password_input.widget.dart';
+import '../../../../shared/view/widgets/primary_button.widget.dart';
+import '../../../../shared/view/widgets/rich_text_button.widget.dart';
+import '../../../../shared/view/widgets/terms_and_policy.widget.dart';
 import '../../../../utils/routes.dart';
 import 'login.store.dart';
 
@@ -73,58 +74,17 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 }),
                 const SizedBox(height: 32),
-                InkWell(
-                  onTap: () => print('Recover password'),
-                  borderRadius: BorderRadius.circular(6),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                    child: RichText(
-                      text: TextSpan(
-                        text: 'Esqueceu a senha? ',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                        children: [
-                          TextSpan(
-                            text: 'Clique aqui.',
-                            style: TextStyle(
-                              color: theme.colorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                RichTextButton(
+                  onPressed: () => print('Recover password'),
+                  firstText: 'Esqueceu a senha? ',
+                  secondText: 'Clique aqui.',
                 ),
                 const SizedBox(height: 8),
-                InkWell(
-                  onTap: () {
-                    print('Register');
-                  },
-                  borderRadius: BorderRadius.circular(6),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                    child: RichText(
-                      text: TextSpan(
-                        text: 'Novo por aqui? ',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                        children: [
-                          TextSpan(
-                            text: 'Inscreva-se agora.',
-                            style: TextStyle(
-                              color: theme.colorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                RichTextButton(
+                  onPressed: () => Navigator.of(context)
+                      .pushNamed(Routes.createAccountEmail),
+                  firstText: 'Novo por aqui? ',
+                  secondText: 'Inscreva-se agora.',
                 ),
                 const SizedBox(height: 96),
                 const TermsAndPolicy()
