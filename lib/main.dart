@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:growbase_mobile_flutter/features/authentication/view/start/start.page.dart';
 
 import 'features/authentication/view/create_account/account_email.page.dart';
 import 'features/authentication/view/create_account/account_password.page.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
       // themeMode: ThemeMode.dark,
       routes: {
         Routes.splashScreen: (_) => const SplashPage(),
+        Routes.startPage: (_) => const StartPage(),
         Routes.login: (_) => const LoginPage(),
         Routes.createAccountEmail: (_) => const AccountEmailPage(),
         Routes.createAccountPersonalData: (ctx) {
