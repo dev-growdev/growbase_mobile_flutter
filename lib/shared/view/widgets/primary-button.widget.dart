@@ -32,7 +32,7 @@ class PrimaryButton extends StatelessWidget {
                   color: Colors.white,
                 ),
               )
-            : const Text('Entrar'),
+            : Text(text),
       ),
     );
   }

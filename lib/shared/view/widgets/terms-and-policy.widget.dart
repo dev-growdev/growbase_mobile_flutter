@@ -2,7 +2,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class TermsAndPolicy extends StatelessWidget {
-  const TermsAndPolicy({super.key});
+  final String actionText;
+  const TermsAndPolicy({
+    Key? key,
+    this.actionText = 'Entrar',
+  }) : super(key: key);
 
   void openTerms(BuildContext context) {
     showBottomSheet(
@@ -49,7 +53,7 @@ class TermsAndPolicy extends StatelessWidget {
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
-          text: 'Ao clicar em "Entrar", você concorda com os nossos ',
+          text: 'Ao clicar em "$actionText", você concorda com os nossos ',
           style: Theme.of(context).textTheme.bodyMedium,
           children: [
             TextSpan(
