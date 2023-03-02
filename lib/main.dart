@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'features/authentication/view/create-account/create-account.page.dart';
+import 'features/authentication/view/create_account/account_email.page.dart';
+import 'features/authentication/view/create_account/account_password.page.dart';
+import 'features/authentication/view/create_account/account_personal_data.page.dart';
+import 'features/authentication/view/create_account/create_account.store.dart';
 import 'features/authentication/view/login/login.page.dart';
 import 'features/categories/view/categories/categories.page.dart';
 import 'features/categories/view/category/category.page.dart';
@@ -25,10 +28,21 @@ class MyApp extends StatelessWidget {
       title: 'Example',
       theme: lightTheme(),
       darkTheme: darkTheme(),
+      // themeMode: ThemeMode.dark,
       routes: {
         Routes.splashScreen: (_) => const SplashPage(),
         Routes.login: (_) => const LoginPage(),
-        Routes.createAccount: (_) => const CreateAccountPage(),
+        Routes.createAccountEmail: (_) => const AccountEmailPage(),
+        Routes.createAccountPersonalData: (ctx) {
+          final store =
+              ModalRoute.of(ctx)?.settings.arguments as CreateAccountStore;
+          return AccountPersonalDataPage(store: store);
+        },
+        Routes.createAccountPassword: (ctx) {
+          final store =
+              ModalRoute.of(ctx)?.settings.arguments as CreateAccountStore;
+          return AccountPasswordPage(store: store);
+        },
         Routes.home: (_) => const HomePage(),
         Routes.categories: (_) => const CategoriesPage(),
         Routes.category: (ctx) {
