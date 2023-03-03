@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
           return VerifyAccountPage(
             login: args['login'] as String,
             onSuccess: args['onSuccess'] as void Function(),
+            sendCode: args['sendCode'] ?? false,
           );
         },
         Routes.createAccountEmail: (_) => const AccountEmailPage(),

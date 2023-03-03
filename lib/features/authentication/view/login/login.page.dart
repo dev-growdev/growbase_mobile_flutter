@@ -48,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                 (_) => false,
               );
             },
+            'sendCode': true,
           },
         );
       }

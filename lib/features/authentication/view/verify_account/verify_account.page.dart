@@ -15,10 +15,12 @@ import 'verify_account.store.dart';
 class VerifyAccountPage extends StatefulWidget {
   final String login;
   final void Function() onSuccess;
+  final bool sendCode;
   const VerifyAccountPage({
     Key? key,
     required this.login,
     required this.onSuccess,
+    required this.sendCode,
   }) : super(key: key);
 
   @override
@@ -37,6 +39,14 @@ class _VerifyAccountPageState extends State<VerifyAccountPage> {
 
     if (result) {
       widget.onSuccess();
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.sendCode) {
+      store.sendCode(widget.login);
     }
   }
 
