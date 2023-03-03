@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:growbase_mobile_flutter/features/authentication/view/start/start.page.dart';
 
 import 'features/authentication/view/create_account/account_email.page.dart';
 import 'features/authentication/view/create_account/account_password.page.dart';
 import 'features/authentication/view/create_account/account_personal_data.page.dart';
 import 'features/authentication/view/create_account/create_account.store.dart';
 import 'features/authentication/view/login/login.page.dart';
+import 'features/authentication/view/start/start.page.dart';
+import 'features/authentication/view/verify_account/verify_account.page.dart';
 import 'features/categories/view/categories/categories.page.dart';
 import 'features/categories/view/category/category.page.dart';
 import 'features/splash/view/splash.page.dart';
@@ -34,6 +35,14 @@ class MyApp extends StatelessWidget {
         Routes.splashScreen: (_) => const SplashPage(),
         Routes.startPage: (_) => const StartPage(),
         Routes.login: (_) => const LoginPage(),
+        Routes.verifyAccount: (ctx) {
+          final args =
+              ModalRoute.of(ctx)?.settings.arguments as Map<String, dynamic>;
+          return VerifyAccountPage(
+            login: args['login'] as String,
+            onSuccess: args['onSuccess'] as void Function(),
+          );
+        },
         Routes.createAccountEmail: (_) => const AccountEmailPage(),
         Routes.createAccountPersonalData: (ctx) {
           final store =

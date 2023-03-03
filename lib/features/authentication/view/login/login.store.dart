@@ -18,6 +18,8 @@ abstract class LoginStoreBase with Store {
 
   String _pass = '';
 
+  String get login => _login;
+
   @observable
   bool _isLoading = false;
 

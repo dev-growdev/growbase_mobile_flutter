@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
+import 'package:growbase_mobile_flutter/shared/errors/failures.dart';
+import 'package:mobx/mobx.dart';
 
 import '../../../../shared/view/widgets/password_input.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
@@ -18,6 +20,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final store = LoginStore(GetIt.I());
+  late final ReactionDisposer reactionDisposer;
 
   void doLogin() async {
     final navigator = Navigator.of(context);
@@ -25,13 +28,46 @@ class _LoginPageState extends State<LoginPage> {
     final result = await store.signIn();
 
     if (result) {
-      navigator.pushReplacementNamed(Routes.home);
+      navigator.pushNamedAndRemoveUntil(
+        Routes.home,
+        (_) => false,
+      );
     }
+  }
+
+  void initializeReactions() {
+    reactionDisposer = reaction((_) => store.failure, (failure) {
+      if (failure is UserNotVerifiedFailure) {
+        Navigator.of(context).pushNamed(
+          Routes.verifyAccount,
+          arguments: {
+            'login': store.login,
+            'onSuccess': () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                Routes.home,
+                (_) => false,
+              );
+            },
+          },
+        );
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initializeReactions();
+  }
+
+  @override
+  void dispose() {
+    reactionDisposer();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -46,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                     label: const Text('Email'),
                     errorText: store.failure != null ? '' : null,
                   ),
-                  onChanged: (text) => store.setLogin(text),
+                  onChanged: store.setLogin,
                   validator: (text) {
                     if (text == null || text.isEmpty) {
                       return 'Campo obrigatório';
@@ -56,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 16),
                 PasswordInput(
-                  onChanged: (text) => store.setPass(text),
+                  onChanged: store.setPass,
                   errorText: store.failure?.message,
                   validator: (text) {
                     if (text == null || text.isEmpty) {

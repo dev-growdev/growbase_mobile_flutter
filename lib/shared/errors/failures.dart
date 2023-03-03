@@ -57,3 +57,7 @@ class ServerFailure extends Failure {
 class NotFoundFailure extends Failure {
   NotFoundFailure(String message) : super(message);
 }
+
+class UserNotVerifiedFailure extends Failure {
+  UserNotVerifiedFailure(String message) : super(message);
+}

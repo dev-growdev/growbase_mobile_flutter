@@ -29,6 +29,10 @@ Future<Either<Failure, T>> makeRequest<T>(Future<T> Function() func) async {
       return Left(UnauthorizedFailure(message));
     }
 
+    if (message.contains('Usuário não verificado')) {
+      return Left(UserNotVerifiedFailure(message));
+    }
+
     return Left(ServerFailure(message));
   }
 }
