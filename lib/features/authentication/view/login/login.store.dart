@@ -1,22 +1,25 @@
 import 'package:dartz/dartz.dart';
-import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../shared/adapters/make_request.adapter.dart';
 import '../../../../shared/entities/user_auth.entity.dart';
 import '../../../../shared/errors/failures.dart';
-import '../../../../shared/view/stores/app.store.dart';
-import '../../../../utils/constants.dart';
 import '../../services/login.service.dart';
+import '../../services/save_user_logged.service.dart';
 
 part 'login.store.g.dart';
 
 class LoginStore = LoginStoreBase with _$LoginStore;
 
 abstract class LoginStoreBase with Store {
-  final LoginService _service;
+  final LoginService _loginService;
+  final SaveUserLoggedService _saveUserLoggedService;
 
-  LoginStoreBase(this._service);
+  LoginStoreBase({
+    required LoginService loginService,
+    required SaveUserLoggedService saveUserLoggedService,
+  })  : _loginService = loginService,
+        _saveUserLoggedService = saveUserLoggedService;
 
   String _login = '';
 
@@ -57,23 +60,23 @@ abstract class LoginStoreBase with Store {
     _isLoading = true;
 
     final resultOrError =
-        await makeRequest(() => _service(login: _login, password: _pass));
-
-    _isLoading = false;
+        await makeRequest(() => _loginService(login: _login, password: _pass));
 
     final result = resultOrError.fold(id, id);
 
     if (resultOrError.isLeft()) {
       _failure = result as Failure;
+      _isLoading = false;
       return false;
     }
 
-    final appStore = GetIt.I<AppStore>();
-    final userAuth = result as UserAuth;
+    await saveUserLogged(result as UserAuth);
 
-    appStore.addUser(userAuth.user);
-    Constants.token = userAuth.token;
+    _isLoading = false;
 
     return true;
   }
+
+  Future<void> saveUserLogged(UserAuth userAuth) =>
+      makeRequest(() => _saveUserLoggedService(userAuth));
 }

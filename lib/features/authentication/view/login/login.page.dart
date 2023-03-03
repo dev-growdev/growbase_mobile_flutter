@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
-import 'package:growbase_mobile_flutter/shared/errors/failures.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../../shared/errors/failures.dart';
 import '../../../../shared/view/widgets/password_input.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
 import '../../../../shared/view/widgets/rich_text_button.widget.dart';
@@ -19,7 +19,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final store = LoginStore(GetIt.I());
+  final store = LoginStore(
+    loginService: GetIt.I(),
+    saveUserLoggedService: GetIt.I(),
+  );
   late final ReactionDisposer reactionDisposer;
 
   void doLogin() async {

@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 
 import 'features/authentication/services/create_account.service.dart';
 import 'features/authentication/services/login.service.dart';
+import 'features/authentication/services/save_user_logged.service.dart';
 import 'features/authentication/services/send_verification_code.service.dart';
 import 'features/authentication/services/verify_account.service.dart';
 import 'features/categories/services/create_category.service.dart';
@@ -53,6 +54,8 @@ void slAuthentication() {
       () => VerifyAccountService(sl()));
   sl.registerLazySingleton<SendVerificationCodeService>(
       () => SendVerificationCodeService(sl()));
+  sl.registerLazySingleton<SaveUserLoggedService>(
+      () => SaveUserLoggedService(localStorage: sl(), appStore: sl()));
 }
 
 void init() {
