@@ -1,5 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:get_it/get_it.dart';
+
+import '../../services/get_terms_and_policy.service.dart';
 
 class TermsAndPolicy extends StatelessWidget {
   final String actionText;
@@ -8,39 +12,53 @@ class TermsAndPolicy extends StatelessWidget {
     this.actionText = 'Entrar',
   }) : super(key: key);
 
-  void openTerms(BuildContext context) {
+  void openTerms(BuildContext context) async {
+    final service = GetIt.I<GetTermsAndPolicyService>();
+    final term = await service('Term');
+
+    // ignore: use_build_context_synchronously
     showBottomSheet(
       context: context,
       builder: (context) => Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              'Termos de Uso',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: 32),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'Termos de Uso',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(height: 32),
+              Html(data: term),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  void openPrivacyPolicy(BuildContext context) {
+  void openPrivacyPolicy(BuildContext context) async {
+    final service = GetIt.I<GetTermsAndPolicyService>();
+    final policy = await service('Policy');
+
+    // ignore: use_build_context_synchronously
     showBottomSheet(
       context: context,
       builder: (context) => Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              'Política de Privacidade',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: 32),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'Política de Privacidade',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(height: 32),
+              Html(data: policy),
+            ],
+          ),
         ),
       ),
     );

@@ -13,6 +13,7 @@ import 'features/categories/services/get_category.service.dart';
 import 'features/categories/services/update_category.service.dart';
 import 'shared/adapters/api.adapter.dart';
 import 'shared/adapters/shared_preference.adapter.dart';
+import 'shared/services/get_terms_and_policy.service.dart';
 import 'shared/view/stores/app.store.dart';
 import 'utils/constants.dart';
 
@@ -31,6 +32,10 @@ void slShared() {
   // adapters
   sl.registerLazySingleton<IHttpAdapter>(() => ApiAdapter(sl()));
   sl.registerLazySingleton<ILocalStorage>(() => SharedPreferenceStorage());
+
+  // services
+  sl.registerLazySingleton<GetTermsAndPolicyService>(
+      () => GetTermsAndPolicyService(sl()));
 
   // stores
   sl.registerLazySingleton<AppStore>(() => AppStore());
