@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 
+import '../../../shared/view/stores/app.store.dart';
 import '../../../shared/view/widgets/body_layout.widget.dart';
+import '../../../utils/routes.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -10,6 +14,13 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final appStore = GetIt.I<AppStore>();
+  void logout() async {
+    final navigator = Navigator.of(context);
+    await appStore.logout();
+    navigator.pushReplacementNamed(Routes.login);
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -24,10 +35,12 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 32),
             Align(
               alignment: Alignment.topCenter,
-              child: Text(
-                'Fulano da Silva',
-                style: theme.textTheme.titleLarge,
-              ),
+              child: Observer(builder: (_) {
+                return Text(
+                  appStore.user?.name ?? '',
+                  style: theme.textTheme.titleLarge,
+                );
+              }),
             ),
             const SizedBox(height: 32),
             _SectionMenu(
@@ -59,7 +72,7 @@ class _ProfilePageState extends State<ProfilePage> {
             Align(
               alignment: Alignment.topLeft,
               child: TextButton.icon(
-                onPressed: () {},
+                onPressed: logout,
                 icon: const Icon(Icons.logout_outlined),
                 label: const Text(
                   'Encerrar sessão',

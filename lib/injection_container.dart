@@ -10,6 +10,8 @@ import 'features/categories/services/get_categories.service.dart';
 import 'features/categories/services/get_category.service.dart';
 import 'features/categories/services/update_category.service.dart';
 import 'shared/adapters/api.adapter.dart';
+import 'shared/adapters/shared_preference.adapter.dart';
+import 'shared/view/stores/app.store.dart';
 import 'utils/constants.dart';
 
 // coverage:ignore-start
@@ -26,6 +28,10 @@ void slLibs() {
 void slShared() {
   // adapters
   sl.registerLazySingleton<IHttpAdapter>(() => ApiAdapter(sl()));
+  sl.registerLazySingleton<ILocalStorage>(() => SharedPreferenceStorage());
+
+  // stores
+  sl.registerLazySingleton<AppStore>(() => AppStore());
 }
 
 void slCategories() {
