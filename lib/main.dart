@@ -5,6 +5,7 @@ import 'features/authentication/view/create_account/account_password.page.dart';
 import 'features/authentication/view/create_account/account_personal_data.page.dart';
 import 'features/authentication/view/create_account/create_account.store.dart';
 import 'features/authentication/view/login/login.page.dart';
+import 'features/authentication/view/recovery_password/recovery_password.page.dart';
 import 'features/authentication/view/start/start.page.dart';
 import 'features/authentication/view/verify_account/verify_account.page.dart';
 import 'features/categories/view/categories/categories.page.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
           return AccountPasswordPage(store: store);
         },
         Routes.home: (_) => const HomePage(),
+        Routes.recoveryPassword: (_) => const RecoveryPasswordPage(),
         Routes.categories: (_) => const CategoriesPage(),
         Routes.category: (ctx) {
           final uid = ModalRoute.of(ctx)?.settings.arguments as String?;

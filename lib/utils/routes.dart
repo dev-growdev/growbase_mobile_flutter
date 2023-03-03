@@ -7,6 +7,7 @@ abstract class Routes {
   static const String verifyAccount = '/verify-account';
   static const String login = '/login';
   static const String home = '/home';
+  static const String recoveryPassword = '/recovery-password';
   static const String categories = '/categories';
   static const String category = '/category';
 }
