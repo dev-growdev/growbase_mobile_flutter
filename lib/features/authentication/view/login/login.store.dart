@@ -1,8 +1,12 @@
 import 'package:dartz/dartz.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../shared/adapters/make_request.adapter.dart';
+import '../../../../shared/entities/user_auth.entity.dart';
 import '../../../../shared/errors/failures.dart';
+import '../../../../shared/view/stores/app.store.dart';
+import '../../../../utils/constants.dart';
 import '../../services/login.service.dart';
 
 part 'login.store.g.dart';
@@ -63,6 +67,12 @@ abstract class LoginStoreBase with Store {
       _failure = result as Failure;
       return false;
     }
+
+    final appStore = GetIt.I<AppStore>();
+    final userAuth = result as UserAuth;
+
+    appStore.addUser(userAuth.user);
+    Constants.token = userAuth.token;
 
     return true;
   }

@@ -1,13 +1,12 @@
 import '../../../shared/adapters/api.adapter.dart';
-import '../../../shared/entities/user.entity.dart';
-import '../../../utils/constants.dart';
+import '../../../shared/entities/user_auth.entity.dart';
 
 class LoginService {
   final IHttpAdapter _http;
 
   const LoginService(this._http);
 
-  Future<User> call({
+  Future<UserAuth> call({
     required String login,
     required String password,
   }) async {
@@ -19,8 +18,6 @@ class LoginService {
       },
     );
 
-    Constants.token = response['data']['token'];
-
-    return User.fromMap(response['data']['user']);
+    return UserAuth.fromMap(response['data']);
   }
 }
