@@ -34,6 +34,7 @@ class _VerifyAccountPageState extends State<VerifyAccountPage> {
   );
 
   void next() async {
+    if (store.pinValue.length < 6) return;
     FocusScope.of(context).unfocus();
     final result = await store.verifyAccount(widget.login);
 
@@ -130,7 +131,7 @@ class _PinCode extends StatelessWidget {
       children: [
         PinCodeTextField(
           appContext: context,
-          length: 5,
+          length: 6,
           onChanged: onChanged,
           pinTheme: PinTheme(
             shape: PinCodeFieldShape.box,

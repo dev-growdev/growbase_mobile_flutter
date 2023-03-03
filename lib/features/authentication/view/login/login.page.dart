@@ -42,12 +42,7 @@ class _LoginPageState extends State<LoginPage> {
           Routes.verifyAccount,
           arguments: {
             'login': store.login,
-            'onSuccess': () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                Routes.home,
-                (_) => false,
-              );
-            },
+            'onSuccess': doLogin,
             'sendCode': true,
           },
         );

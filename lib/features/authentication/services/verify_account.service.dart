@@ -9,7 +9,10 @@ class VerifyAccountService {
     required String login,
     required String code,
   }) async {
-    // await _http.post('/send-verification-code', {'email': login});
+    await _http.post('/verify-account', {
+      'email': login,
+      'code': code,
+    });
 
     return true;
   }

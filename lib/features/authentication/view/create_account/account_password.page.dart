@@ -35,20 +35,10 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
     final canNavigate = await store.createAccount();
 
     if (canNavigate) {
-      navigator
-        ..pushNamedAndRemoveUntil(
-          Routes.login,
-          (route) => false,
-        )
-        ..pushNamed(Routes.verifyAccount, arguments: {
-          'login': store.state.email,
-          'onSuccess': () {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              Routes.home,
-              (_) => false,
-            );
-          },
-        });
+      navigator.pushNamedAndRemoveUntil(
+        Routes.login,
+        (route) => false,
+      );
     }
   }
 
