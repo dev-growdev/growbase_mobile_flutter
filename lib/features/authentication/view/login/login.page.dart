@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../shared/errors/failures.dart';
+import '../../../../shared/view/widgets/body_layout.widget.dart';
 import '../../../../shared/view/widgets/password_input.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
 import '../../../../shared/view/widgets/rich_text_button.widget.dart';
@@ -69,64 +70,64 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Observer(builder: (context) {
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                    label: const Text('Email'),
-                    errorText: store.failure != null ? '' : null,
-                  ),
-                  onChanged: store.setLogin,
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'Campo obrigatório';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 16),
-                PasswordInput(
-                  onChanged: store.setPass,
-                  errorText: store.failure?.message,
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'Campo obrigatório';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 32),
-                Observer(builder: (_) {
-                  return PrimaryButton(
-                    text: 'Entrar',
-                    onPressed: doLogin,
-                    isLoading: store.isLoading,
-                  );
-                }),
-                const SizedBox(height: 32),
-                RichTextButton(
-                  onPressed: () => print('Recover password'),
-                  firstText: 'Esqueceu a senha? ',
-                  secondText: 'Clique aqui.',
-                ),
-                const SizedBox(height: 8),
-                RichTextButton(
-                  onPressed: () => Navigator.of(context)
-                      .pushNamed(Routes.createAccountEmail),
-                  firstText: 'Novo por aqui? ',
-                  secondText: 'Inscreva-se agora.',
-                ),
-                const SizedBox(height: 96),
-                const TermsAndPolicy()
-              ],
-            );
-          }),
+      body: BodyLayout(
+        hasAppBar: true,
+        topFlex: 6,
+        bottomWidget: const Flexible(
+          child: TermsAndPolicy(),
         ),
+        child: Observer(builder: (context) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextFormField(
+                decoration: InputDecoration(
+                  label: const Text('Email'),
+                  errorText: store.failure != null ? '' : null,
+                ),
+                onChanged: store.setLogin,
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Campo obrigatório';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 16),
+              PasswordInput(
+                onChanged: store.setPass,
+                errorText: store.failure?.message,
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Campo obrigatório';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 32),
+              Observer(builder: (_) {
+                return PrimaryButton(
+                  text: 'Entrar',
+                  onPressed: doLogin,
+                  isLoading: store.isLoading,
+                );
+              }),
+              const SizedBox(height: 32),
+              RichTextButton(
+                onPressed: () => print('Recover password'),
+                firstText: 'Esqueceu a senha? ',
+                secondText: 'Clique aqui.',
+              ),
+              const SizedBox(height: 8),
+              RichTextButton(
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(Routes.createAccountEmail),
+                firstText: 'Novo por aqui? ',
+                secondText: 'Inscreva-se agora.',
+              ),
+            ],
+          );
+        }),
       ),
     );
   }

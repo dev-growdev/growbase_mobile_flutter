@@ -49,11 +49,9 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
     return Scaffold(
       appBar: AppBar(),
       body: BodyLayout(
-        bottomWidget: Column(
-          children: const [
-            TermsAndPolicy(actionText: 'Cadastre-se'),
-            SizedBox(height: 32),
-          ],
+        topFlex: 6,
+        bottomWidget: const Flexible(
+          child: TermsAndPolicy(actionText: 'Cadastre-se'),
         ),
         child: Observer(builder: (context) {
           return Form(
