@@ -5,6 +5,7 @@ class BodyLayout extends StatelessWidget {
   final Widget? bottomWidget;
   final EdgeInsetsGeometry? padding;
   final bool hasAppBar;
+  final int topFlex;
 
   const BodyLayout({
     Key? key,
@@ -12,6 +13,7 @@ class BodyLayout extends StatelessWidget {
     this.bottomWidget,
     this.padding = const EdgeInsets.all(16),
     this.hasAppBar = true,
+    this.topFlex = 1,
   }) : super(key: key);
 
   @override
@@ -31,7 +33,10 @@ class BodyLayout extends StatelessWidget {
                   ? child
                   : Column(
                       children: [
-                        Expanded(child: child),
+                        Expanded(
+                          flex: topFlex,
+                          child: child,
+                        ),
                         bottomWidget!,
                       ],
                     ),
