@@ -248,7 +248,7 @@ class __ResendCodeState extends State<_ResendCode> {
 
               final result = await widget.actionResendCode();
 
-              if (!result) {
+              if (result) {
                 _initializeTimer();
                 messenger.showSnackBar(
                   SuccessSnackBar(

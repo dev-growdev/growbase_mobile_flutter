@@ -46,22 +46,16 @@ abstract class VerifyAccountStoreBase with Store {
 
   @action
   Future<bool> sendCode(String login) async {
-    _clearFailure();
-    _isLoading = true;
-
     final resultOrError =
         await makeRequest(() => _sendVerificationCodeService(login));
-
-    _isLoading = false;
 
     final result = resultOrError.fold(id, id);
 
     if (resultOrError.isLeft()) {
-      _failure = result as Failure;
       return false;
     }
 
-    return true;
+    return result as bool;
   }
 
   @action
