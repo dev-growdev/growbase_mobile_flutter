@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../shared/view/stores/app.store.dart';
+import '../../../../shared/view/widgets/bottom_sheet_layout.widget.dart';
 import '../../../../shared/view/widgets/custom_snackbars.widget.dart';
 import '../../../../utils/extensions_methods.dart';
 import 'update_profile.store.dart';
@@ -36,16 +37,10 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
 
     if (result) {
       navigator.pop();
+      messenger.showSnackBar(
+        SuccessSnackBar(text: 'Perfil atualizado com sucesso!'),
+      );
     }
-
-    messenger.showSnackBar(
-      result
-          ? SuccessSnackBar(text: 'Perfil atualizado com sucesso!')
-          : ErrorSnackBar(
-              text:
-                  'Erro ao atualizar o perfil - ${store.failure?.message ?? ''}',
-            ),
-    );
   }
 
   @override
@@ -53,7 +48,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
     final theme = Theme.of(context);
 
     return Form(
-      child: _BottomSheetLayout(
+      child: BottomSheetLayout(
         actions: [
           Observer(builder: (context) {
             return _SaveButton(
@@ -72,8 +67,9 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
               const SizedBox(height: 32),
               TextFormField(
                 initialValue: appStore.user?.name,
-                decoration: const InputDecoration(
-                  label: Text('Nome Completo'),
+                decoration: InputDecoration(
+                  label: const Text('Nome Completo'),
+                  errorText: store.failure != null ? '' : null,
                 ),
                 keyboardType: TextInputType.name,
                 onChanged: store.setName,
@@ -87,8 +83,9 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
               const SizedBox(height: 16),
               TextFormField(
                 initialValue: appStore.user?.document?.formatDocument(),
-                decoration: const InputDecoration(
-                  label: Text('CPF/CNPJ'),
+                decoration: InputDecoration(
+                  label: const Text('CPF/CNPJ'),
+                  errorText: store.failure != null ? '' : null,
                 ),
                 keyboardType: TextInputType.number,
                 onChanged: (text) => store.setDocument(
@@ -111,8 +108,9 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
               const SizedBox(height: 16),
               TextFormField(
                 initialValue: appStore.user?.email,
-                decoration: const InputDecoration(
-                  label: Text('E-mail'),
+                decoration: InputDecoration(
+                  label: const Text('E-mail'),
+                  errorText: store.failure != null ? '' : null,
                 ),
                 keyboardType: TextInputType.emailAddress,
                 onChanged: store.setEmail,
@@ -126,8 +124,9 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
               const SizedBox(height: 16),
               TextFormField(
                 initialValue: appStore.user?.phone?.formatPhone(),
-                decoration: const InputDecoration(
-                  label: Text('Telefone'),
+                decoration: InputDecoration(
+                  label: const Text('Telefone'),
+                  errorText: store.failure?.message,
                 ),
                 keyboardType: TextInputType.phone,
                 onChanged: (text) => store.setPhone(
@@ -139,6 +138,8 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                 ],
                 validator: (text) {
                   final value = text!.removeSpecialCharacters();
+
+                  if (value.isEmpty) return null;
 
                   if (!value.isValidPhone) {
                     return 'Preencha o seu telefone corretamente.';
@@ -182,59 +183,5 @@ class _SaveButton extends StatelessWidget {
                   ),
             ),
           );
-  }
-}
-
-class _BottomSheetLayout extends StatelessWidget {
-  final Widget child;
-  final List<Widget> actions;
-  const _BottomSheetLayout({
-    Key? key,
-    required this.child,
-    required this.actions,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Column(
-      children: [
-        const SizedBox(height: 56),
-        Expanded(
-          child: Material(
-            elevation: 1,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(28),
-              ),
-            ),
-            color: theme.colorScheme.surface,
-            shadowColor: theme.colorScheme.shadow,
-            surfaceTintColor: theme.colorScheme.surfaceTint,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: kToolbarHeight,
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          icon: const Icon(Icons.close),
-                        ),
-                        const Spacer(),
-                        ...actions,
-                      ],
-                    ),
-                  ),
-                  Expanded(child: child)
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
   }
 }
