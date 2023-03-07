@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:growbase_mobile_flutter/features/profile/services/update_password.service.dart';
 
 import 'features/authentication/services/create_account.service.dart';
 import 'features/authentication/services/login.service.dart';
@@ -71,6 +72,7 @@ void slProfile() {
   // services
   sl.registerLazySingleton<UpdateProfileService>(
       () => UpdateProfileService(sl()));
+  sl.registerLazySingleton(() => UpdatePasswordService(sl()));
 }
 
 void init() {

@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import '../../../shared/view/stores/app.store.dart';
 import '../../../shared/view/widgets/body_layout.widget.dart';
 import '../../../utils/routes.dart';
+import 'update_password/update_password.page.dart';
 import 'update_profile/update_profile.page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -23,6 +24,15 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       builder: (context) => const UpdateProfilePage(),
+    );
+  }
+
+  void openUpdatePassword() {
+    showBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      builder: (context) => const UpdatePasswordPage(),
     );
   }
 
@@ -65,7 +75,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _SectionItem(
                   icon: Icons.lock_outline_rounded,
                   title: 'Trocar senha',
-                  onTap: () {},
+                  onTap: openUpdatePassword,
                 ),
               ],
             ),
