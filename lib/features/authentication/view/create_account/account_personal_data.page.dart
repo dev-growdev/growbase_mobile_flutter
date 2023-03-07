@@ -86,7 +86,7 @@ class _AccountPersonalDataPageState extends State<AccountPersonalDataPage> {
                 validator: (text) {
                   final value = text!.removeSpecialCharacters();
 
-                  if (!value.isValidDocument()) {
+                  if (!value.isValidDocument) {
                     return 'Preencha o seu CPF ou CNPJ corretamente.';
                   }
 
