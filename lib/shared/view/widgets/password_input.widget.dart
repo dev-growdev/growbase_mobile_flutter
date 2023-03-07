@@ -35,6 +35,7 @@ class _PasswordInputState extends State<PasswordInput> {
           widget.label,
         ),
         errorText: widget.errorText,
+        errorMaxLines: 2,
         suffixIcon: IconButton(
           icon: Icon(
             obscureText ? Icons.visibility : Icons.visibility_off,
