@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import '../../../shared/view/stores/app.store.dart';
 import '../../../shared/view/widgets/body_layout.widget.dart';
 import '../../../utils/routes.dart';
+import 'update_profile/update_profile.page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -15,6 +16,16 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final appStore = GetIt.I<AppStore>();
+
+  void openUpdateProfile() {
+    showBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      builder: (context) => const UpdateProfilePage(),
+    );
+  }
+
   void logout() async {
     final navigator = Navigator.of(context);
     await appStore.logout();
@@ -49,7 +60,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _SectionItem(
                   icon: Icons.account_circle_outlined,
                   title: 'Meu perfil',
-                  onTap: () {},
+                  onTap: openUpdateProfile,
                 ),
                 _SectionItem(
                   icon: Icons.lock_outline_rounded,

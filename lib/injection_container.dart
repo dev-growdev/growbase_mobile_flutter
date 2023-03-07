@@ -11,6 +11,7 @@ import 'features/categories/services/create_category.service.dart';
 import 'features/categories/services/get_categories.service.dart';
 import 'features/categories/services/get_category.service.dart';
 import 'features/categories/services/update_category.service.dart';
+import 'features/profile/services/update_profile.service.dart';
 import 'shared/adapters/api.adapter.dart';
 import 'shared/adapters/shared_preference.adapter.dart';
 import 'shared/services/get_terms_and_policy.service.dart';
@@ -66,11 +67,18 @@ void slAuthentication() {
       () => RecoveryPasswordService(sl()));
 }
 
+void slProfile() {
+  // services
+  sl.registerLazySingleton<UpdateProfileService>(
+      () => UpdateProfileService(sl()));
+}
+
 void init() {
   slLibs();
   slShared();
   slCategories();
   slAuthentication();
+  slProfile();
 }
 
 // coverage:ignore-end
