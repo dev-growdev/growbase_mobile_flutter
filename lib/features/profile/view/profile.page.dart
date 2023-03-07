@@ -36,6 +36,10 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  void openHelpDesk() {
+    Navigator.of(context).pushNamed(Routes.faqs);
+  }
+
   void logout() async {
     final navigator = Navigator.of(context);
     await appStore.logout();
@@ -86,7 +90,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _SectionItem(
                   icon: Icons.support_agent_outlined,
                   title: 'Central de ajuda',
-                  onTap: () {},
+                  onTap: openHelpDesk,
                 ),
               ],
             ),
@@ -193,7 +197,7 @@ class _SectionItem extends StatelessWidget {
                 Expanded(
                   child: Text(
                     title,
-                    style: theme.textTheme.bodyMedium?.copyWith(
+                    style: theme.textTheme.titleSmall?.copyWith(
                       color: theme.colorScheme.primary,
                     ),
                   ),

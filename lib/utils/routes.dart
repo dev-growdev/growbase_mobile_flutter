@@ -8,6 +8,8 @@ abstract class Routes {
   static const String login = '/login';
   static const String home = '/home';
   static const String recoveryPassword = '/recovery-password';
+  static const String faqs = '/faqs';
+  static const String requestHelp = '/request-help';
   static const String categories = '/categories';
   static const String category = '/category';
 }

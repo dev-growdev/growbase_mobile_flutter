@@ -10,6 +10,8 @@ import 'features/authentication/view/start/start.page.dart';
 import 'features/authentication/view/verify_account/verify_account.page.dart';
 import 'features/categories/view/categories/categories.page.dart';
 import 'features/categories/view/category/category.page.dart';
+import 'features/help_desk/view/faqs/faqs.page.dart';
+import 'features/help_desk/view/request_help/request_help.dart';
 import 'features/splash/view/splash.page.dart';
 import 'injection_container.dart' as di;
 import 'shared/view/home/home.page.dart';
@@ -58,6 +60,8 @@ class MyApp extends StatelessWidget {
         },
         Routes.home: (_) => const HomePage(),
         Routes.recoveryPassword: (_) => const RecoveryPasswordPage(),
+        Routes.faqs: (_) => const FaqsPage(),
+        Routes.requestHelp: (_) => const RequestHelpPage(),
         Routes.categories: (_) => const CategoriesPage(),
         Routes.category: (ctx) {
           final uid = ModalRoute.of(ctx)?.settings.arguments as String?;
