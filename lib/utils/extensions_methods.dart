@@ -6,7 +6,7 @@ extension StringExtension on String {
   }
 
   String? formatDocument() {
-    if (isValidDocument() == false) return null;
+    if (isValidDocument == false) return null;
     return length == 11
         ? UtilBrasilFields.obterCpf(this)
         : UtilBrasilFields.obterCnpj(this);
@@ -22,11 +22,16 @@ extension StringExtension on String {
     return UtilBrasilFields.obterCep(this);
   }
 
-  bool isValidDocument() {
+  bool get isValidDocument {
     if (isEmpty) return false;
     return length == 11
         ? UtilBrasilFields.isCPFValido(this)
         : UtilBrasilFields.isCNPJValido(this);
+  }
+
+  bool get isValidPhone {
+    if (isEmpty) return false;
+    return length >= 10;
   }
 
   bool get isEmail {
