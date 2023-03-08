@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:growbase_mobile_flutter/features/help_desk/services/request_help.service.dart';
 import 'package:growbase_mobile_flutter/features/profile/services/update_password.service.dart';
 
 import 'features/authentication/services/create_account.service.dart';
@@ -12,6 +13,7 @@ import 'features/categories/services/create_category.service.dart';
 import 'features/categories/services/get_categories.service.dart';
 import 'features/categories/services/get_category.service.dart';
 import 'features/categories/services/update_category.service.dart';
+import 'features/help_desk/services/get_faqs.service.dart';
 import 'features/profile/services/update_profile.service.dart';
 import 'shared/adapters/api.adapter.dart';
 import 'shared/adapters/shared_preference.adapter.dart';
@@ -75,12 +77,19 @@ void slProfile() {
   sl.registerLazySingleton(() => UpdatePasswordService(sl()));
 }
 
+void slHelpDesk() {
+  // services
+  sl.registerLazySingleton<GetFaqsService>(() => GetFaqsService(sl()));
+  sl.registerLazySingleton<RequestHelpService>(() => RequestHelpService(sl()));
+}
+
 void init() {
   slLibs();
   slShared();
   slCategories();
   slAuthentication();
   slProfile();
+  slHelpDesk();
 }
 
 // coverage:ignore-end

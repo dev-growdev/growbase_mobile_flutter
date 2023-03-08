@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 
 import '../../../../shared/view/widgets/body_layout.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
 import '../../../../utils/routes.dart';
+import 'faqs.store.dart';
 
 class FaqsPage extends StatefulWidget {
   const FaqsPage({super.key});
@@ -12,6 +15,14 @@ class FaqsPage extends StatefulWidget {
 }
 
 class _FaqsPageState extends State<FaqsPage> {
+  final store = FaqsStore(GetIt.I());
+
+  @override
+  void initState() {
+    super.initState();
+    store.getFaqs();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -19,37 +30,48 @@ class _FaqsPageState extends State<FaqsPage> {
       appBar: AppBar(
         title: const Text('FAQs - Dúvidas Frequentes'),
       ),
-      body: BodyLayout(
-        bottomWidget: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: 16),
-            Text(
-              'Não encontrou o que procura?',
-              style: theme.textTheme.titleMedium,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16),
-            PrimaryButton(
-              onPressed: () =>
-                  Navigator.of(context).pushNamed(Routes.requestHelp),
-              text: 'Pedir ajuda',
-            ),
-          ],
-        ),
-        child: Column(
-          children: List.generate(
-            5,
-            (index) {
-              return _FaqTile(
-                question: 'Dúvida ${index + 1}',
-                answer:
-                    'quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.',
-              );
-            },
+      body: Observer(builder: (context) {
+        if (store.isLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return BodyLayout(
+          bottomWidget: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 16),
+              Text(
+                'Não encontrou o que procura?',
+                style: theme.textTheme.titleMedium,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              PrimaryButton(
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(Routes.requestHelp),
+                text: 'Pedir ajuda',
+              ),
+            ],
           ),
-        ),
-      ),
+          child: store.state.isEmpty
+              ? const Center(
+                  child: Text('Nenhuma pergunta encontrada.'),
+                )
+              : Column(
+                  children: List.generate(
+                    store.state.length,
+                    (index) {
+                      final faq = store.state.elementAt(index);
+                      return _FaqTile(
+                        question: faq.question,
+                        answer: faq.answer,
+                      );
+                    },
+                  ),
+                ),
+        );
+      }),
     );
   }
 }

@@ -1,10 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 
 import '../../../../shared/view/widgets/body_layout.widget.dart';
+import '../../../../shared/view/widgets/custom_snackbars.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
+import 'request_help.store.dart';
 
-class RequestHelpPage extends StatelessWidget {
+class RequestHelpPage extends StatefulWidget {
   const RequestHelpPage({super.key});
+
+  @override
+  State<RequestHelpPage> createState() => _RequestHelpPageState();
+}
+
+class _RequestHelpPageState extends State<RequestHelpPage> {
+  final store = RequestHelpStore(GetIt.I());
+
+  void send(BuildContext context) async {
+    final form = Form.of(context);
+    if (!form.validate()) return;
+    final messenger = ScaffoldMessenger.of(context);
+    final navigator = Navigator.of(context);
+
+    final result = await store.requestHelp();
+
+    messenger.showSnackBar(
+      result
+          ? SuccessSnackBar(
+              text: 'Sua dúvida foi enviada com sucesso.',
+            )
+          : ErrorSnackBar(
+              text:
+                  'Não foi possível enviar sua dúvida. - ${store.failure?.message}',
+            ),
+    );
+
+    if (result) navigator.pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,26 +58,31 @@ class RequestHelpPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32),
-              TextFormField(
-                autofocus: true,
-                decoration: const InputDecoration(
-                  hintText: 'Descreva sua dúvida da melhor forma possível',
-                ),
-                keyboardType: TextInputType.multiline,
-                maxLines: 5,
-                validator: (text) {
-                  if (text == null || text.isEmpty) {
-                    return 'O campo não pode ser vazio';
-                  }
+              Observer(builder: (_) {
+                return TextFormField(
+                  autofocus: true,
+                  decoration: InputDecoration(
+                    hintText: 'Descreva sua dúvida da melhor forma possível',
+                    errorText: store.failure?.message,
+                  ),
+                  keyboardType: TextInputType.multiline,
+                  onChanged: store.setMessage,
+                  maxLines: 5,
+                  validator: (text) {
+                    if (text == null || text.length < 10) {
+                      return 'A mensagem está muito curta';
+                    }
 
-                  return null;
-                },
-              ),
+                    return null;
+                  },
+                );
+              }),
               const SizedBox(height: 32),
-              Builder(builder: (context) {
+              Observer(builder: (context) {
                 return PrimaryButton(
                   text: 'Enviar dúvida',
                   onPressed: () {},
+                  isLoading: store.isLoading,
                 );
               }),
             ],

@@ -8,10 +8,10 @@ class GetFaqsService {
   const GetFaqsService(this._http);
 
   Future<List<Faq>> call() async {
-    final response = await _http.get('/categories');
+    final response = await _http.get('/faqs');
 
-    return (response['data'] as List<Map<String, dynamic>>)
-        .map(Faq.fromMap)
-        .toList();
+    return List<Faq>.from(
+      response['data'].map((e) => Faq.fromMap(e)),
+    );
   }
 }
