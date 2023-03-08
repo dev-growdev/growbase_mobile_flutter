@@ -1,16 +1,23 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:growbase_mobile_flutter/features/authentication/services/login.service.dart';
+import 'package:growbase_mobile_flutter/features/authentication/services/save_user_logged.service.dart';
 import 'package:growbase_mobile_flutter/features/authentication/view/login/login.store.dart';
 import 'package:growbase_mobile_flutter/shared/adapters/api.adapter.dart';
+import 'package:growbase_mobile_flutter/shared/adapters/shared_preference.adapter.dart';
 import 'package:growbase_mobile_flutter/shared/errors/failures.dart';
+import 'package:growbase_mobile_flutter/shared/view/stores/app.store.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockDio extends Mock implements Dio {}
 
 LoginStore makeStore(Dio dio) => LoginStore(
-      LoginService(
+      loginService: LoginService(
         ApiAdapter(dio),
+      ),
+      saveUserLoggedService: SaveUserLoggedService(
+        localStorage: SharedPreferenceStorage(),
+        appStore: AppStore(),
       ),
     );
 
