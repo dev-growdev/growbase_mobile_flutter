@@ -135,8 +135,8 @@ class _PinCode extends StatelessWidget {
           onChanged: onChanged,
           pinTheme: PinTheme(
             shape: PinCodeFieldShape.box,
-            fieldHeight: size.width > 340 ? 60 : 50,
-            fieldWidth: size.width > 340 ? 60 : 50,
+            fieldHeight: 50,
+            fieldWidth: 50,
             borderWidth: 1,
             // activeColor: const Color(0xFFC4C4C4),
             activeColor: errorText != null
