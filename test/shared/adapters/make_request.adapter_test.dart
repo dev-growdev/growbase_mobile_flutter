@@ -35,7 +35,7 @@ void main() {
     });
 
     test('Deve retornar um Left com BadRequestFailure', () async {
-      when(() => dio.get(any())).thenThrow(DioError(
+      when(() => dio.get(any())).thenThrow(DioException(
         requestOptions: RequestOptions(path: ''),
         response: Response(
           requestOptions: RequestOptions(path: ''),
@@ -75,7 +75,7 @@ void main() {
     });
 
     test('Deve retornar um Left com NotFoundFailure', () async {
-      when(() => dio.get(any())).thenThrow(DioError(
+      when(() => dio.get(any())).thenThrow(DioException(
         requestOptions: RequestOptions(path: ''),
         response: Response(
           requestOptions: RequestOptions(path: ''),
@@ -99,7 +99,7 @@ void main() {
     });
 
     test('Deve retornar um Left com UnauthorizedFailure', () async {
-      when(() => dio.get(any())).thenThrow(DioError(
+      when(() => dio.get(any())).thenThrow(DioException(
         requestOptions: RequestOptions(path: ''),
         response: Response(
           requestOptions: RequestOptions(path: ''),
@@ -123,7 +123,7 @@ void main() {
     });
 
     test('Deve retornar um Left com ServerFailure', () async {
-      when(() => dio.get(any())).thenThrow(DioError(
+      when(() => dio.get(any())).thenThrow(DioException(
         requestOptions: RequestOptions(path: ''),
         response: Response(
           requestOptions: RequestOptions(path: ''),
