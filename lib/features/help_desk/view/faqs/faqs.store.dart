@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:growbase_mobile_flutter/features/help_desk/entities/faq.entity.dart';
-import 'package:growbase_mobile_flutter/features/help_desk/services/get_faqs.service.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../shared/adapters/make_request.adapter.dart';
 import '../../../../shared/errors/failures.dart';
+import '../../entities/faq.entity.dart';
+import '../../services/get_faqs.service.dart';
 
 part 'faqs.store.g.dart';
 

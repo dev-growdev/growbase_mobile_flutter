@@ -1,6 +1,5 @@
-import 'package:growbase_mobile_flutter/features/help_desk/entities/faq.entity.dart';
-
 import '../../../shared/adapters/api.adapter.dart';
+import '../entities/faq.entity.dart';
 
 class GetFaqsService {
   final IHttpAdapter _http;

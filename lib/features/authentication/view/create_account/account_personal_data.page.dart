@@ -1,8 +1,8 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:growbase_mobile_flutter/shared/view/widgets/body_layout.widget.dart';
 
+import '../../../../shared/view/widgets/body_layout.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
 import '../../../../shared/view/widgets/rich_text_button.widget.dart';
 import '../../../../utils/extensions_methods.dart';

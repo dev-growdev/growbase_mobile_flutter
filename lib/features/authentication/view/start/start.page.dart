@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:growbase_mobile_flutter/shared/view/widgets/primary_button.widget.dart';
 
+import '../../../../shared/view/widgets/primary_button.widget.dart';
 import '../../../../utils/routes.dart';
 
 class StartPage extends StatelessWidget {
