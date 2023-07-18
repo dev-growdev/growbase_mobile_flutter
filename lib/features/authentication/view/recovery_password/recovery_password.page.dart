@@ -5,8 +5,8 @@ import 'package:get_it/get_it.dart';
 import '../../../../shared/view/widgets/body_layout.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
 import '../../../../shared/view/widgets/rich_text_button.widget.dart';
-import '../../../../utils/extensions_methods.dart';
-import '../../../../utils/routes.dart';
+import '../../../../utils/constants/routes.constants.dart';
+import '../../../../utils/extension_methods/extensions_methods.dart';
 import 'recovery_password.store.dart';
 
 class RecoveryPasswordPage extends StatefulWidget {
@@ -81,8 +81,8 @@ class _RecoveryPasswordPageState extends State<RecoveryPasswordPage> {
               }),
               const SizedBox(height: 32),
               RichTextButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(Routes.requestHelp),
+                onPressed: () => Navigator.of(context)
+                    .pushNamed(RoutesConstants.requestHelp),
                 firstText: 'Não consegue recuperar a senha? ',
                 secondText: 'Fale conosco.',
               ),

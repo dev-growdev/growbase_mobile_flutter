@@ -16,7 +16,7 @@ import 'features/splash/view/splash.page.dart';
 import 'injection_container.dart' as di;
 import 'shared/view/home/home.page.dart';
 import 'themes/theme.dart';
-import 'utils/routes.dart';
+import 'utils/constants/routes.constants.dart';
 
 void main() {
   di.init();
@@ -35,10 +35,10 @@ class MyApp extends StatelessWidget {
       darkTheme: darkTheme(),
       // themeMode: ThemeMode.dark,
       routes: {
-        Routes.splashScreen: (_) => const SplashPage(),
-        Routes.startPage: (_) => const StartPage(),
-        Routes.login: (_) => const LoginPage(),
-        Routes.verifyAccount: (ctx) {
+        RoutesConstants.splashScreen: (_) => const SplashPage(),
+        RoutesConstants.startPage: (_) => const StartPage(),
+        RoutesConstants.login: (_) => const LoginPage(),
+        RoutesConstants.verifyAccount: (ctx) {
           final args =
               ModalRoute.of(ctx)?.settings.arguments as Map<String, dynamic>;
           return VerifyAccountPage(
@@ -47,23 +47,23 @@ class MyApp extends StatelessWidget {
             sendCode: args['sendCode'] ?? false,
           );
         },
-        Routes.createAccountEmail: (_) => const AccountEmailPage(),
-        Routes.createAccountPersonalData: (ctx) {
+        RoutesConstants.createAccountEmail: (_) => const AccountEmailPage(),
+        RoutesConstants.createAccountPersonalData: (ctx) {
           final store =
               ModalRoute.of(ctx)?.settings.arguments as CreateAccountStore;
           return AccountPersonalDataPage(store: store);
         },
-        Routes.createAccountPassword: (ctx) {
+        RoutesConstants.createAccountPassword: (ctx) {
           final store =
               ModalRoute.of(ctx)?.settings.arguments as CreateAccountStore;
           return AccountPasswordPage(store: store);
         },
-        Routes.home: (_) => const HomePage(),
-        Routes.recoveryPassword: (_) => const RecoveryPasswordPage(),
-        Routes.faqs: (_) => const FaqsPage(),
-        Routes.requestHelp: (_) => const RequestHelpPage(),
-        Routes.categories: (_) => const CategoriesPage(),
-        Routes.category: (ctx) {
+        RoutesConstants.home: (_) => const HomePage(),
+        RoutesConstants.recoveryPassword: (_) => const RecoveryPasswordPage(),
+        RoutesConstants.faqs: (_) => const FaqsPage(),
+        RoutesConstants.requestHelp: (_) => const RequestHelpPage(),
+        RoutesConstants.categories: (_) => const CategoriesPage(),
+        RoutesConstants.category: (ctx) {
           final uid = ModalRoute.of(ctx)?.settings.arguments as String?;
           return CategoryPage(uid: uid);
         },

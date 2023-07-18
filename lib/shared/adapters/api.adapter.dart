@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../utils/constants.dart';
+import '../../utils/constants/app.constants.dart';
 
 abstract class IHttpAdapter {
   Future<Map<String, dynamic>> get(String url,
@@ -28,7 +28,7 @@ class ApiAdapter implements IHttpAdapter {
   }) async {
     var result = await _dio.get(
       url,
-      options: Options(headers: Constants.headerApi),
+      options: Options(headers: AppConstants.headerApi),
       queryParameters: queryParameters,
     );
 
@@ -44,7 +44,7 @@ class ApiAdapter implements IHttpAdapter {
     var result = await _dio.post(
       url,
       data: data,
-      options: Options(headers: Constants.headerApi),
+      options: Options(headers: AppConstants.headerApi),
       queryParameters: queryParameters,
     );
 
@@ -60,7 +60,7 @@ class ApiAdapter implements IHttpAdapter {
     var result = await _dio.delete(
       url,
       data: data,
-      options: Options(headers: Constants.headerApi),
+      options: Options(headers: AppConstants.headerApi),
       queryParameters: queryParameters,
     );
 
@@ -76,7 +76,7 @@ class ApiAdapter implements IHttpAdapter {
     var result = await _dio.put(
       url,
       data: data,
-      options: Options(headers: Constants.headerApi),
+      options: Options(headers: AppConstants.headerApi),
       queryParameters: queryParameters,
     );
 

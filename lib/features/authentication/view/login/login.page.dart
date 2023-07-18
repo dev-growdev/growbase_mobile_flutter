@@ -9,7 +9,7 @@ import '../../../../shared/view/widgets/password_input.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
 import '../../../../shared/view/widgets/rich_text_button.widget.dart';
 import '../../../../shared/view/widgets/terms_and_policy.widget.dart';
-import '../../../../utils/routes.dart';
+import '../../../../utils/constants/routes.constants.dart';
 import 'login.store.dart';
 
 class LoginPage extends StatefulWidget {
@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
 
     if (result) {
       navigator.pushNamedAndRemoveUntil(
-        Routes.home,
+        RoutesConstants.home,
         (_) => false,
       );
     }
@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
     reactionDisposer = reaction((_) => store.failure, (failure) {
       if (failure is UserNotVerifiedFailure) {
         Navigator.of(context).pushNamed(
-          Routes.verifyAccount,
+          RoutesConstants.verifyAccount,
           arguments: {
             'login': store.login,
             'onSuccess': doLogin,
@@ -114,15 +114,15 @@ class _LoginPageState extends State<LoginPage> {
               }),
               const SizedBox(height: 32),
               RichTextButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(Routes.recoveryPassword),
+                onPressed: () => Navigator.of(context)
+                    .pushNamed(RoutesConstants.recoveryPassword),
                 firstText: 'Esqueceu a senha? ',
                 secondText: 'Clique aqui.',
               ),
               const SizedBox(height: 8),
               RichTextButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(Routes.createAccountEmail),
+                onPressed: () => Navigator.of(context)
+                    .pushNamed(RoutesConstants.createAccountEmail),
                 firstText: 'Novo por aqui? ',
                 secondText: 'Inscreva-se agora.',
               ),

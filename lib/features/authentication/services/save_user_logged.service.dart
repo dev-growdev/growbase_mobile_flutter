@@ -1,7 +1,7 @@
 import '../../../shared/adapters/shared_preference.adapter.dart';
 import '../../../shared/entities/user_auth.entity.dart';
 import '../../../shared/view/stores/app.store.dart';
-import '../../../utils/constants.dart';
+import '../../../utils/constants/app.constants.dart';
 
 class SaveUserLoggedService {
   final ILocalStorage _localStorage;
@@ -17,7 +17,7 @@ class SaveUserLoggedService {
     await _localStorage.setValue('userLogged', userAuth.token);
 
     _appStore.addUser(userAuth.user);
-    Constants.token = userAuth.token;
+    AppConstants.token = userAuth.token;
 
     return true;
   }

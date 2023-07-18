@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../utils/routes.dart';
+import '../../../../utils/constants/routes.constants.dart';
 import 'get_categories.store.dart';
 
 class CategoriesPage extends StatefulWidget {
@@ -22,7 +22,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
   }
 
   void action([String? uid]) async {
-    await Navigator.of(context).pushNamed(Routes.category, arguments: uid);
+    await Navigator.of(context)
+        .pushNamed(RoutesConstants.category, arguments: uid);
     store.refresh();
   }
 

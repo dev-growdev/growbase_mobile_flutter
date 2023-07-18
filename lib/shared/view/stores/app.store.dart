@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../utils/constants.dart';
+import '../../../utils/constants/app.constants.dart';
 import '../../adapters/shared_preference.adapter.dart';
 import '../../entities/user.entity.dart';
 
@@ -25,7 +25,7 @@ abstract class AppStoreBase with Store {
   @action
   Future<void> logout() async {
     clearUser();
-    Constants.token = null;
+    AppConstants.token = null;
     await GetIt.I<ILocalStorage>().removeValue('userLogged');
   }
 }

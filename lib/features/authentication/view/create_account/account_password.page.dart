@@ -6,7 +6,7 @@ import '../../../../shared/view/widgets/password_input.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
 import '../../../../shared/view/widgets/rich_text_button.widget.dart';
 import '../../../../shared/view/widgets/terms_and_policy.widget.dart';
-import '../../../../utils/routes.dart';
+import '../../../../utils/constants/routes.constants.dart';
 import 'create_account.store.dart';
 
 class AccountPasswordPage extends StatefulWidget {
@@ -36,7 +36,7 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
 
     if (canNavigate) {
       navigator.pushNamedAndRemoveUntil(
-        Routes.login,
+        RoutesConstants.login,
         (route) => false,
       );
     }
@@ -97,7 +97,7 @@ class _AccountPasswordPageState extends State<AccountPasswordPage> {
                 const SizedBox(height: 32),
                 RichTextButton(
                   onPressed: () =>
-                      Navigator.of(context).pushNamed(Routes.login),
+                      Navigator.of(context).pushNamed(RoutesConstants.login),
                   firstText: 'Já criou sua conta? ',
                   secondText: 'Acesse aqui.',
                 ),

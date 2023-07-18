@@ -7,7 +7,7 @@ import 'package:get_it/get_it.dart';
 import '../../../../shared/view/stores/app.store.dart';
 import '../../../../shared/view/widgets/bottom_sheet_layout.widget.dart';
 import '../../../../shared/view/widgets/custom_snackbars.widget.dart';
-import '../../../../utils/extensions_methods.dart';
+import '../../../../utils/extension_methods/extensions_methods.dart';
 import 'update_profile.store.dart';
 
 class UpdateProfilePage extends StatefulWidget {

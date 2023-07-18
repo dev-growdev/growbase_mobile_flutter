@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:growbase_mobile_flutter/features/help_desk/services/request_help.service.dart';
-import 'package:growbase_mobile_flutter/features/profile/services/update_password.service.dart';
 
 import 'features/authentication/services/create_account.service.dart';
 import 'features/authentication/services/login.service.dart';
@@ -14,12 +12,14 @@ import 'features/categories/services/get_categories.service.dart';
 import 'features/categories/services/get_category.service.dart';
 import 'features/categories/services/update_category.service.dart';
 import 'features/help_desk/services/get_faqs.service.dart';
+import 'features/help_desk/services/request_help.service.dart';
+import 'features/profile/services/update_password.service.dart';
 import 'features/profile/services/update_profile.service.dart';
 import 'shared/adapters/api.adapter.dart';
 import 'shared/adapters/shared_preference.adapter.dart';
 import 'shared/services/get_terms_and_policy.service.dart';
 import 'shared/view/stores/app.store.dart';
-import 'utils/constants.dart';
+import 'utils/constants/app.constants.dart';
 
 // coverage:ignore-start
 
@@ -28,7 +28,7 @@ final sl = GetIt.I;
 
 void slLibs() {
   sl.registerLazySingleton<Dio>(
-    () => Dio(BaseOptions(baseUrl: Constants.url)),
+    () => Dio(BaseOptions(baseUrl: AppConstants.baseUrl)),
   );
 }
 
