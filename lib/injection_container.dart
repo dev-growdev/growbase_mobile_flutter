@@ -15,6 +15,8 @@ import 'features/help_desk/services/get_faqs.service.dart';
 import 'features/help_desk/services/request_help.service.dart';
 import 'features/profile/services/update_password.service.dart';
 import 'features/profile/services/update_profile.service.dart';
+import 'features/splash/services/get_user.service.dart';
+import 'features/splash/services/load_saved_token.service.dart';
 import 'shared/adapters/api.adapter.dart';
 import 'shared/adapters/shared_preference.adapter.dart';
 import 'shared/services/get_terms_and_policy.service.dart';
@@ -43,6 +45,12 @@ void slShared() {
 
   // stores
   sl.registerLazySingleton<AppStore>(() => AppStore());
+}
+
+void slSplash() {
+  sl.registerLazySingleton<GetUserService>(() => GetUserService(sl()));
+  sl.registerLazySingleton<LoadSavedTokenService>(
+      () => LoadSavedTokenService(sl()));
 }
 
 void slCategories() {
