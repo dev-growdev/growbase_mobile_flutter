@@ -3,7 +3,7 @@ import 'package:growbase_mobile_flutter/features/authentication/services/login.s
 import 'package:growbase_mobile_flutter/shared/adapters/api.adapter.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../builders/shared/user.entity.builder.dart';
+import '../../../builders/shared/user_auth.entity.builder.dart';
 
 class MockHttpClient extends Mock implements IHttpAdapter {}
 
@@ -50,13 +50,14 @@ void main() {
               'name': 'any_name',
               'document': 'any_document',
             },
+            'token': 'any_token',
           },
         },
       );
 
       final result = await sut.call(login: 'any_login', password: 'any_pass');
 
-      expect(result, UserBuilder.init().build());
+      expect(result, UserAuthBuilder.init().build());
     });
   });
 }

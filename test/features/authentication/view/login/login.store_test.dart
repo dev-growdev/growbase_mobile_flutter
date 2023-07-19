@@ -8,6 +8,7 @@ import 'package:growbase_mobile_flutter/shared/adapters/shared_preference.adapte
 import 'package:growbase_mobile_flutter/shared/errors/failures.dart';
 import 'package:growbase_mobile_flutter/shared/view/stores/app.store.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MockDio extends Mock implements Dio {}
 
@@ -22,6 +23,8 @@ LoginStore makeStore(Dio dio) => LoginStore(
     );
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences.setMockInitialValues({});
   final dio = MockDio();
 
   group('LoginStore', () {
@@ -41,7 +44,8 @@ void main() {
                   'email': 'any_email',
                   'name': 'any_name',
                   'document': 'any_document',
-                }
+                },
+                'token': 'any_token',
               },
             },
             statusCode: 200,
