@@ -6,7 +6,7 @@ class SendVerificationCodeService {
   const SendVerificationCodeService(this._http);
 
   Future<bool> call(String login) async {
-    //  await _http.post('/send-verification-code', {'email': login});
+    await _http.post('/send-verification-code', {'email': login});
 
     return true;
   }
