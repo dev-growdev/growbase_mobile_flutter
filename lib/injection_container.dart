@@ -94,6 +94,7 @@ void slHelpDesk() {
 void init() {
   slLibs();
   slShared();
+  slSplash();
   slCategories();
   slAuthentication();
   slProfile();
