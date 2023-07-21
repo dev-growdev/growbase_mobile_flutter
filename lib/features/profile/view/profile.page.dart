@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 
 import '../../../shared/view/stores/app.store.dart';
 import '../../../shared/view/widgets/body_layout.widget.dart';
-import '../../../utils/routes.dart';
+import '../../../utils/constants/routes.constants.dart';
 import 'update_password/update_password.page.dart';
 import 'update_profile/update_profile.page.dart';
 
@@ -37,13 +37,13 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   void openHelpDesk() {
-    Navigator.of(context).pushNamed(Routes.faqs);
+    Navigator.of(context).pushNamed(RoutesConstants.faqs);
   }
 
   void logout() async {
     final navigator = Navigator.of(context);
     await appStore.logout();
-    navigator.pushReplacementNamed(Routes.login);
+    navigator.pushReplacementNamed(RoutesConstants.login);
   }
 
   @override

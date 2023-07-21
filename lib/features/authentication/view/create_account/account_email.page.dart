@@ -4,8 +4,8 @@ import 'package:get_it/get_it.dart';
 import '../../../../shared/view/widgets/body_layout.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
 import '../../../../shared/view/widgets/rich_text_button.widget.dart';
-import '../../../../utils/extensions_methods.dart';
-import '../../../../utils/routes.dart';
+import '../../../../utils/constants/routes.constants.dart';
+import '../../../../utils/extension_methods/extensions_methods.dart';
 import 'create_account.store.dart';
 
 class AccountEmailPage extends StatefulWidget {
@@ -23,7 +23,7 @@ class _AccountEmailPageState extends State<AccountEmailPage> {
     if (!form.validate()) return;
 
     Navigator.of(context).pushNamed(
-      Routes.createAccountPersonalData,
+      RoutesConstants.createAccountPersonalData,
       arguments: store,
     );
   }
@@ -71,7 +71,8 @@ class _AccountEmailPageState extends State<AccountEmailPage> {
               }),
               const SizedBox(height: 32),
               RichTextButton(
-                onPressed: () => Navigator.of(context).pushNamed(Routes.login),
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(RoutesConstants.login),
                 firstText: 'Já criou sua conta? ',
                 secondText: 'Acesse aqui.',
               ),

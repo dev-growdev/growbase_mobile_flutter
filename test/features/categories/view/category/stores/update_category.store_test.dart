@@ -67,7 +67,7 @@ void main() {
       final store = makeStore(dio);
       when(() => dio.put('/categories/$categoryUid',
           data: any(named: 'data'), options: any(named: 'options'))).thenThrow(
-        DioError(
+        DioException(
           requestOptions: RequestOptions(path: ''),
           response: Response(
             requestOptions: RequestOptions(path: ''),

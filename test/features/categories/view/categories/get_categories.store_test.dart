@@ -60,7 +60,7 @@ void main() {
       final store = makeStore(dio);
       when(() => dio.get('/categories', options: any(named: 'options')))
           .thenThrow(
-        DioError(
+        DioException(
           requestOptions: RequestOptions(path: ''),
           response: Response(
             requestOptions: RequestOptions(path: ''),

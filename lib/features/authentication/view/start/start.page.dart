@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:growbase_mobile_flutter/shared/view/widgets/primary_button.widget.dart';
 
-import '../../../../utils/routes.dart';
+import '../../../../shared/view/widgets/primary_button.widget.dart';
+import '../../../../utils/constants/routes.constants.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -20,13 +20,14 @@ class StartPage extends StatelessWidget {
             const SizedBox(height: 32),
             PrimaryButton(
               text: 'Login',
-              onPressed: () => Navigator.of(context).pushNamed(Routes.login),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(RoutesConstants.login),
             ),
             const SizedBox(height: 8),
             PrimaryButton(
               text: 'Cadastro',
-              onPressed: () =>
-                  Navigator.of(context).pushNamed(Routes.createAccountEmail),
+              onPressed: () => Navigator.of(context)
+                  .pushNamed(RoutesConstants.createAccountEmail),
             ),
           ],
         ),

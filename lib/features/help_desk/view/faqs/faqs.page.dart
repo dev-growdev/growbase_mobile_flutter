@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 
 import '../../../../shared/view/widgets/body_layout.widget.dart';
 import '../../../../shared/view/widgets/primary_button.widget.dart';
-import '../../../../utils/routes.dart';
+import '../../../../utils/constants/routes.constants.dart';
 import 'faqs.store.dart';
 
 class FaqsPage extends StatefulWidget {
@@ -48,8 +48,8 @@ class _FaqsPageState extends State<FaqsPage> {
               ),
               const SizedBox(height: 16),
               PrimaryButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(Routes.requestHelp),
+                onPressed: () => Navigator.of(context)
+                    .pushNamed(RoutesConstants.requestHelp),
                 text: 'Pedir ajuda',
               ),
             ],

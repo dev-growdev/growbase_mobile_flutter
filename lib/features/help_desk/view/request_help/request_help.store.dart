@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:growbase_mobile_flutter/features/help_desk/services/request_help.service.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../shared/adapters/make_request.adapter.dart';
 import '../../../../shared/errors/failures.dart';
+import '../../services/request_help.service.dart';
 
 part 'request_help.store.g.dart';
 

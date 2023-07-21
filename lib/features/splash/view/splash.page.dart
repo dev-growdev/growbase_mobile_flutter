@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
-import '../../../utils/routes.dart';
+import '../../../utils/constants/routes.constants.dart';
+import 'splash.store.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -10,22 +12,29 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  final store = SplashStore(
+    savedTokenService: GetIt.I(),
+    getUserService: GetIt.I(),
+  );
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(seconds: 3));
-      if (!mounted) return;
-      Navigator.of(context).pushReplacementNamed(Routes.startPage);
+      final navigator = Navigator.of(context);
+      final isLogged = await store.userIsLogged();
+      isLogged
+          ? navigator.pushReplacementNamed(RoutesConstants.home)
+          : navigator.pushReplacementNamed(RoutesConstants.startPage);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return const Material(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           FlutterLogo(
             size: 200,
           ),

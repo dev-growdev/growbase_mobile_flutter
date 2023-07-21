@@ -8,7 +8,7 @@ Future<Either<Failure, T>> makeRequest<T>(Future<T> Function() func) async {
   try {
     final T result = await func();
     return Right(result);
-  } on DioError catch (err) {
+  } on DioException catch (err) {
     final int? statusCode = err.response?.statusCode;
     final Map<String, dynamic> error = err.response?.data['error'];
     final String message = error['message'];
